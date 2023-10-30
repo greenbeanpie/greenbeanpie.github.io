@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2023-10-30T11:53:52.787Z</updated>
+  <updated>2023-10-30T13:12:17.157Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/"/>
     <id>https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/</id>
     <published>2023-10-30T11:48:44.000Z</published>
-    <updated>2023-10-30T11:53:52.787Z</updated>
+    <updated>2023-10-30T13:12:17.157Z</updated>
     
     
       
@@ -29,7 +29,7 @@
         
         
     <summary type="html">&lt;p&gt;理论上来说根据 GPL v2 可以自由分发，所以在这里贴上作者应该就不是什么大问题了（确信）&lt;/p&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;&amp;#x2F;&amp;#x2F;</summary>
         
       
     
@@ -51,7 +51,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/"/>
     <id>https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/</id>
     <published>2023-10-29T08:09:31.000Z</published>
-    <updated>2023-10-29T12:25:18.458Z</updated>
+    <updated>2023-10-30T13:12:12.342Z</updated>
     
     
       
@@ -79,7 +79,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/27/cpp-templates/"/>
     <id>https://greenbeanpie.github.io/2023/10/27/cpp-templates/</id>
     <published>2023-10-27T10:58:35.000Z</published>
-    <updated>2023-10-30T07:53:00.971Z</updated>
+    <updated>2023-10-30T13:12:17.154Z</updated>
     
     
       

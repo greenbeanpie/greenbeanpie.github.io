@@ -410,21 +410,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-10-29
+                    2023-10-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.6k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    9 Min
+                    10 Min
                 </div>
                 
 
@@ -453,10 +453,294 @@
 <p>请确保你安装了 requests、bs4、lxml模块。</p>
 <p>请将以下两个文件放到同一个目录下运行。</p>
 <p>main.py:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python3</span></span><br><span class="line"><span class="comment"># encoding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests, os, sys</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> write <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># from tqdm import tqdm</span></span><br><span class="line"><span class="keyword">from</span> requests.adapters <span class="keyword">import</span> HTTPAdapter</span><br><span class="line"><span class="keyword">from</span> requests.packages.urllib3.util.retry <span class="keyword">import</span> Retry</span><br><span class="line"></span><br><span class="line">os.chdir(os.getcwd() + <span class="string">&quot;/Something else/20231019/&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">head = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">\\documentclass[a4paper,margin=1.0cm,10.5pt]&#123;book&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\usepackage[UTF8]&#123;ctex&#125;</span></span><br><span class="line"><span class="string">\\usepackage&#123;tipa&#125;</span></span><br><span class="line"><span class="string">\\usepackage&#123;color&#125;</span></span><br><span class="line"><span class="string">\\usepackage&#123;geometry&#125;</span></span><br><span class="line"><span class="string">\\usepackage&#123;fontspec&#125;</span></span><br><span class="line"><span class="string">\\usepackage&#123;xcolor&#125;</span></span><br><span class="line"><span class="string">\\usepackage&#123;titlesec&#125;</span></span><br><span class="line"><span class="string">\\defaultfontfeatures&#123;Ligatures=TeX&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\setmainfont&#123;Times New Roman&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\renewcommand&#123;\\large&#125;&#123;\\fontsize&#123;14pt&#125;&#123;\\baselineskip&#125;\\selectfont&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\definecolor&#123;Purple&#125;&#123;rgb&#125;&#123;.256,.0,.511&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\newfontfamily\\sectionfont[Color=Purple]&#123;Times New Roman&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\titleformat*&#123;\\section&#125;&#123;\\large\\bfseries\\sffamily\\color&#123;Purple&#125;&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\begin&#123;document&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\title&#123;Vocabulary&#125;</span></span><br><span class="line"><span class="string">\\maketitle</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">\\pagenumbering&#123;roman&#125;</span></span><br><span class="line"><span class="string">\\tableofcontents</span></span><br><span class="line"><span class="string">\\newpage</span></span><br><span class="line"><span class="string">\\pagenumbering&#123;arabic&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">tail = <span class="string">&quot;&quot;&quot;\\end&#123;document&#125;&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">header = &#123;</span><br><span class="line">	<span class="string">&quot;Cookie&quot;</span>: <span class="string">&#x27;XSRF-TOKEN=091b0a7e-7b7c-440f-82ba-7853a686d0e8; preferredDictionaries=&quot;english-chinese-simplified,english-chinese-traditional,english,british-grammar&quot;; _ga=GA1.3.1985437458.1697684466; _gid=GA1.3.1397756659.1697684466; amp-access=amp-DgWec-PNndO292HPfqJugg; _hjFirstSeen=1; _hjSession_2790984=eyJpZCI6Ijc4ZmUwMGE3LTM0MjQtNGNhNi1hMjYwLTE3Yjc3YmQxMTE0MSIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImluU2FtcGxlIjpmYWxzZSwic2Vzc2lvbml6ZXJCZXRhRW5hYmxlZCI6dHJ1ZX0=; _sp_ses.7ecc=*; OptanonConsent=isGpcEnabled=0&amp;datestamp=Thu+Oct+19+2023+11%3A01%3A20+GMT%2B0800+(China+Standard+Time)&amp;version=202308.1.0&amp;browserGpcFlag=0&amp;isIABGlobal=false&amp;hosts=&amp;landingPath=NotLandingPage&amp;groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A0&amp;AwaitingReconsent=false; _sp_id.7ecc=3979def0-c2d7-4674-82ae-82dabd30e180.1697684468.1.1697684480..0b270403-3325-4540-80fe-b9939b45295d....0; _hjSessionUser_2790984=eyJpZCI6IjllMjU2Zjk3LTU5ZjAtNWNhYi1hYzI4LWUyZDlhYmIzOGY4ZiIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImV4aXN0aW5nIjp0cnVlfQ==; _gat=1; iawsc1m=1; _sharedID=54582c27-481b-45f6-af8b-567598974fc2; _sharedID_cst=zix7LPQsHA%3D%3D; _pbjs_userid_consent_data=3524755945110770; _sharedid=0362b518-b56a-4a08-9f01-687b29d9e710; _lr_retry_request=true; _lr_env_src_ats=false; pbjs-unifiedid=%7B%22TDID%22%3A%22b82f813d-b87d-406b-920c-4d28ffdd6e63%22%2C%22TDID_LOOKUP%22%3A%22TRUE%22%2C%22TDID_CREATED_AT%22%3A%222023-09-19T03%3A10%3A42%22%7D; pbjs-unifiedid_cst=zix7LPQsHA%3D%3D; loginPopup=5; _ga_L9GCR21SZ7=GS1.3.1697684466.1.1.1697685069.27.0.0; iawpvccs=4; iawpvc=4; iawpvtc1m=4; cto_bundle=-fkA8F9VeGgzOEh2TlVBQyUyQnowREg4QkhxZlY5USUyQnRrdSUyQmQ3ZHFlSTRJJTJCTmppNmt1WCUyRlFxQWhKSlNKN1d6T0NwU3Z1RUx6WmUxSmxqOWd4RHROekZuclFJZCUyRjZQYnNyTjVoSmRpUzBpSyUyQmdGWnI3bHFVZFZ4Q3YzU1hxd0JQZmMlMkJFV0NUZjAlMkZuQm96NU9BNU14M2RVSkxaS0ElM0QlM0Q; cto_bidid=PEgR8V9vZWpoUjBET21nT0lHSUhkZUMySG1WZUhYMDJFbGxmUUR5cFJxUTZhejNRY3lmNWFDZlJrRjlJTDRoMnNxQTFlaTJKd3U3Z3BWdmx0S3FBNXZVZU8xMEZmbUQwVUZKRXpRdFNqSFZYZ3RQdyUzRA&#x27;</span>,</span><br><span class="line">	<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.46&quot;</span>,</span><br><span class="line">	<span class="string">&quot;sec-ch-ua-mobile&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&quot;test.tex&quot;</span>, <span class="string">&quot;w+&quot;</span>)</span><br><span class="line"></span><br><span class="line">stdin = <span class="built_in">open</span>(<span class="string">&quot;word.in&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line">file.write(head)</span><br><span class="line"></span><br><span class="line"><span class="comment"># book = input(&quot;请输入书本:&quot;)</span></span><br><span class="line"></span><br><span class="line">cntbook = <span class="built_in">int</span>(stdin.readline())</span><br><span class="line"></span><br><span class="line">lock=threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">word</span>):</span><br><span class="line">	<span class="comment"># templine.set_description(&quot;Processing &quot;+nowpage)</span></span><br><span class="line">	word = word.replace(<span class="string">&quot; &quot;</span>,<span class="string">&quot;-&quot;</span>)</span><br><span class="line">	word = word.replace(<span class="string">&quot;/&quot;</span>,<span class="string">&quot;-&quot;</span>)</span><br><span class="line">	session = requests.Session()</span><br><span class="line">	retry = Retry(total=<span class="number">114514</span>, backoff_factor=<span class="number">5</span>)</span><br><span class="line">	adapter = HTTPAdapter(max_retries=retry)</span><br><span class="line">	session.mount(<span class="string">&#x27;http://&#x27;</span>, adapter)</span><br><span class="line">	session.mount(<span class="string">&#x27;https://&#x27;</span>, adapter)</span><br><span class="line">	response = session.get(</span><br><span class="line">		<span class="string">&quot;https://dictionary.cambridge.org/dictionary/english-chinese-simplified/&quot;</span></span><br><span class="line">		+ word,</span><br><span class="line">		headers=header,</span><br><span class="line">	)</span><br><span class="line">	contentori = BeautifulSoup(response.text, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		word = contentori.find_all(<span class="string">&quot;span&quot;</span>,class_=<span class="string">&quot;hw dhw&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;Error occured on word &quot;</span>+word+<span class="string">&quot;, please check the code or spelling.&quot;</span>)</span><br><span class="line">	<span class="comment"># tempfile = open(&quot;test.out&quot;,&quot;r&quot;)</span></span><br><span class="line">	<span class="comment"># temptext = tempfile.read()</span></span><br><span class="line">	<span class="comment"># tempfile.close()</span></span><br><span class="line">	<span class="comment"># content = BeautifulSoup(temptext ,&quot;lxml&quot;)</span></span><br><span class="line">	<span class="comment"># print(content)</span></span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		lock.acquire()</span><br><span class="line">		<span class="keyword">for</span> content1 <span class="keyword">in</span> contentori.find_all(<span class="string">&quot;div&quot;</span>, class_=<span class="string">&quot;pr entry-body__el&quot;</span>):</span><br><span class="line">			temp = content1.find_all(<span class="string">&quot;div&quot;</span>, class_=<span class="string">&quot;pr dsense&quot;</span>)</span><br><span class="line">			pronoun=<span class="string">&quot;&quot;</span></span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				pronoun = content1.find_all(<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;pron dpron&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">			<span class="keyword">except</span>:</span><br><span class="line">				<span class="keyword">pass</span></span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				part_of_speech = content1.find_all(<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;pos dsense_pos&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">			<span class="keyword">except</span>:</span><br><span class="line">				part_of_speech = content1.find_all(<span class="string">&quot;span&quot;</span>,class_=<span class="string">&quot;pos dpos&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">			attri=<span class="string">&quot;&quot;</span></span><br><span class="line">			<span class="keyword">try</span>:</span><br><span class="line">				attri = content1.find_all(<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;dgram&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">			<span class="keyword">except</span>:</span><br><span class="line">				<span class="keyword">pass</span></span><br><span class="line">			temp2 = content1.find_all(<span class="string">&quot;div&quot;</span>,class_=<span class="string">&quot;def-block ddef_block&quot;</span>)</span><br><span class="line">			<span class="keyword">for</span> content <span class="keyword">in</span> temp2:</span><br><span class="line">				chinese = content.find_all(</span><br><span class="line">					<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;trans dtrans dtrans-se break-cj&quot;</span></span><br><span class="line">				)[<span class="number">0</span>].text</span><br><span class="line">				<span class="keyword">try</span>:</span><br><span class="line">					attri = content.find_all(<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;dgram&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">				<span class="keyword">except</span>:</span><br><span class="line">					<span class="keyword">pass</span></span><br><span class="line">				describe = content.find_all(<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;guideword dsense_gw&quot;</span>)</span><br><span class="line">				example_ENG = content.find_all(<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;eg deg&quot;</span>)</span><br><span class="line">				example_CHI = content.find_all(</span><br><span class="line">					<span class="string">&quot;span&quot;</span>, class_=<span class="string">&quot;trans dtrans dtrans-se hdb break-cj&quot;</span></span><br><span class="line">				)</span><br><span class="line">				sentence = content.find_all(<span class="string">&quot;li&quot;</span>, class_=<span class="string">&quot;eg dexamp hax&quot;</span>)</span><br><span class="line">				write(</span><br><span class="line">					file,</span><br><span class="line">					word,</span><br><span class="line">					pronoun,</span><br><span class="line">					chinese,</span><br><span class="line">					part_of_speech,</span><br><span class="line">					attri,</span><br><span class="line">					example_CHI,</span><br><span class="line">					example_ENG,</span><br><span class="line">					sentence,</span><br><span class="line">				)</span><br><span class="line">		lock.release()</span><br><span class="line">			<span class="comment"># else:</span></span><br><span class="line">			<span class="comment"># 	# content = temp[0]</span></span><br><span class="line">			<span class="comment"># 	chinese = contentori.find_all(</span></span><br><span class="line">			<span class="comment"># 		&quot;span&quot;, class_=&quot;trans dtrans dtrans-se break-cj&quot;</span></span><br><span class="line">			<span class="comment"># 	)[0].text</span></span><br><span class="line">			<span class="comment"># 	part_of_speech = &quot;&quot;</span></span><br><span class="line">			<span class="comment"># 	try:</span></span><br><span class="line">			<span class="comment"># 		part_of_speech = contentori.find_all(&quot;span&quot;, class_=&quot;pos dpos&quot;)[0].text</span></span><br><span class="line">			<span class="comment"># 	except IndexError:</span></span><br><span class="line">			<span class="comment"># 		part_of_speech = contentori.find_all(&quot;span&quot;, class_=&quot;pos dsense_pos&quot;)[</span></span><br><span class="line">			<span class="comment"># 			0</span></span><br><span class="line">			<span class="comment"># 		].text</span></span><br><span class="line">			<span class="comment"># 	attri = &quot;&quot;</span></span><br><span class="line">			<span class="comment"># 	try:</span></span><br><span class="line">			<span class="comment"># 		attri = contentori.find_all(&quot;span&quot;, class_=&quot;dgram&quot;)[0].text</span></span><br><span class="line">			<span class="comment"># 	except:</span></span><br><span class="line">			<span class="comment"># 		pass</span></span><br><span class="line">			<span class="comment"># 	describe = contentori.find_all(&quot;span&quot;, class_=&quot;guideword dsense_gw&quot;)</span></span><br><span class="line">			<span class="comment"># 	example_ENG = contentori.find_all(&quot;span&quot;, class_=&quot;eg deg&quot;)</span></span><br><span class="line">			<span class="comment"># 	example_CHI = contentori.find_all(</span></span><br><span class="line">			<span class="comment"># 		&quot;span&quot;, class_=&quot;trans dtrans dtrans-se hdb break-cj&quot;</span></span><br><span class="line">			<span class="comment"># 	)</span></span><br><span class="line">			<span class="comment"># 	sentence = contentori.find_all(&quot;li&quot;, class_=&quot;eg dexamp hax&quot;)</span></span><br><span class="line">			<span class="comment"># 	write(</span></span><br><span class="line">			<span class="comment"># 		file,</span></span><br><span class="line">			<span class="comment"># 		word,</span></span><br><span class="line">			<span class="comment"># 		pronoun,</span></span><br><span class="line">			<span class="comment"># 		chinese,</span></span><br><span class="line">			<span class="comment"># 		part_of_speech,</span></span><br><span class="line">			<span class="comment"># 		attri,</span></span><br><span class="line">			<span class="comment"># 		example_CHI,</span></span><br><span class="line">			<span class="comment"># 		example_ENG,</span></span><br><span class="line">			<span class="comment"># 		sentence,</span></span><br><span class="line">			<span class="comment"># 	)</span></span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;Error occured on word &quot;</span>+word+<span class="string">&quot;, please check the code or spelling.&quot;</span>)</span><br><span class="line">		lock.release()</span><br><span class="line">	<span class="comment"># file.write(&quot;\n\n\n&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> nowbook <span class="keyword">in</span> <span class="built_in">range</span>(cntbook):</span><br><span class="line">	book = stdin.readline().replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">	page = <span class="built_in">int</span>(stdin.readline())</span><br><span class="line"></span><br><span class="line">	file.write(<span class="string">&quot;\\chapter&#123;&quot;</span> + book + <span class="string">&quot;&#125;\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(page):</span><br><span class="line">		<span class="comment"># temp = stdin.readline().split()</span></span><br><span class="line">		nowpage = stdin.readline().replace(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">		<span class="comment"># print(&quot;processing &quot;+nowpage)</span></span><br><span class="line">		file.write(</span><br><span class="line">			<span class="string">&quot;\\textcolor[RGB]&#123;128,0,255&#125;&#123;\\section&#123;&quot;</span></span><br><span class="line">			+ book</span><br><span class="line">			+ <span class="string">&quot; &quot;</span></span><br><span class="line">			+ nowpage</span><br><span class="line">			+ <span class="string">&quot; &quot;</span></span><br><span class="line">			+ stdin.readline().replace(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">			+ <span class="string">&quot;&#125;&#125;\n&quot;</span></span><br><span class="line">		)</span><br><span class="line">		<span class="comment"># file.write(&quot;\\begin&#123;enumerate&#125;\n&quot;)</span></span><br><span class="line">		<span class="comment"># cnt = int(stdin.readline())</span></span><br><span class="line">		cnt=<span class="built_in">int</span>(stdin.readline())</span><br><span class="line">		words=[]</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(cnt):</span><br><span class="line">			words.append(stdin.readline().replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;&quot;</span>))</span><br><span class="line">		<span class="comment"># words = stdin.readline()</span></span><br><span class="line">		threadings = []</span><br><span class="line">		<span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">			threadings.append(</span><br><span class="line">				threading.Thread(</span><br><span class="line">					target=solve,</span><br><span class="line">					args=[</span><br><span class="line">						word,</span><br><span class="line">					],</span><br><span class="line">				)</span><br><span class="line">			)</span><br><span class="line">		<span class="keyword">for</span> t <span class="keyword">in</span> threadings:</span><br><span class="line">			t.start()</span><br><span class="line">		<span class="comment"># for t in threadings:</span></span><br><span class="line">			t.join()</span><br><span class="line">			</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">file.write(tail)</span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#! &#x2F;usr&#x2F;bin&#x2F;python3
+# encoding&#x3D;utf-8
+
+import requests, os, sys
+from bs4 import BeautifulSoup
+from write import *
+# from tqdm import tqdm
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
+os.chdir(os.getcwd() + &quot;&#x2F;Something else&#x2F;20231019&#x2F;&quot;)
+
+
+
+head &#x3D; &quot;&quot;&quot;
+\\documentclass[a4paper,margin&#x3D;1.0cm,10.5pt]&#123;book&#125;
+
+\\usepackage[UTF8]&#123;ctex&#125;
+\\usepackage&#123;tipa&#125;
+\\usepackage&#123;color&#125;
+\\usepackage&#123;geometry&#125;
+\\usepackage&#123;fontspec&#125;
+\\usepackage&#123;xcolor&#125;
+\\usepackage&#123;titlesec&#125;
+\\defaultfontfeatures&#123;Ligatures&#x3D;TeX&#125;
+
+\\setmainfont&#123;Times New Roman&#125;
+
+\\renewcommand&#123;\\large&#125;&#123;\\fontsize&#123;14pt&#125;&#123;\\baselineskip&#125;\\selectfont&#125;
+
+\\definecolor&#123;Purple&#125;&#123;rgb&#125;&#123;.256,.0,.511&#125;
+
+\\newfontfamily\\sectionfont[Color&#x3D;Purple]&#123;Times New Roman&#125;
+
+\\titleformat*&#123;\\section&#125;&#123;\\large\\bfseries\\sffamily\\color&#123;Purple&#125;&#125;
+
+\\begin&#123;document&#125;
+
+\\title&#123;Vocabulary&#125;
+\\maketitle
+
+\\pagenumbering&#123;roman&#125;
+\\tableofcontents
+\\newpage
+\\pagenumbering&#123;arabic&#125;
+&quot;&quot;&quot;
+
+tail &#x3D; &quot;&quot;&quot;\\end&#123;document&#125;&quot;&quot;&quot;
+
+header &#x3D; &#123;
+	&quot;Cookie&quot;: &#39;XSRF-TOKEN&#x3D;091b0a7e-7b7c-440f-82ba-7853a686d0e8; preferredDictionaries&#x3D;&quot;english-chinese-simplified,english-chinese-traditional,english,british-grammar&quot;; _ga&#x3D;GA1.3.1985437458.1697684466; _gid&#x3D;GA1.3.1397756659.1697684466; amp-access&#x3D;amp-DgWec-PNndO292HPfqJugg; _hjFirstSeen&#x3D;1; _hjSession_2790984&#x3D;eyJpZCI6Ijc4ZmUwMGE3LTM0MjQtNGNhNi1hMjYwLTE3Yjc3YmQxMTE0MSIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImluU2FtcGxlIjpmYWxzZSwic2Vzc2lvbml6ZXJCZXRhRW5hYmxlZCI6dHJ1ZX0&#x3D;; _sp_ses.7ecc&#x3D;*; OptanonConsent&#x3D;isGpcEnabled&#x3D;0&amp;datestamp&#x3D;Thu+Oct+19+2023+11%3A01%3A20+GMT%2B0800+(China+Standard+Time)&amp;version&#x3D;202308.1.0&amp;browserGpcFlag&#x3D;0&amp;isIABGlobal&#x3D;false&amp;hosts&#x3D;&amp;landingPath&#x3D;NotLandingPage&amp;groups&#x3D;C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A0&amp;AwaitingReconsent&#x3D;false; _sp_id.7ecc&#x3D;3979def0-c2d7-4674-82ae-82dabd30e180.1697684468.1.1697684480..0b270403-3325-4540-80fe-b9939b45295d....0; _hjSessionUser_2790984&#x3D;eyJpZCI6IjllMjU2Zjk3LTU5ZjAtNWNhYi1hYzI4LWUyZDlhYmIzOGY4ZiIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImV4aXN0aW5nIjp0cnVlfQ&#x3D;&#x3D;; _gat&#x3D;1; iawsc1m&#x3D;1; _sharedID&#x3D;54582c27-481b-45f6-af8b-567598974fc2; _sharedID_cst&#x3D;zix7LPQsHA%3D%3D; _pbjs_userid_consent_data&#x3D;3524755945110770; _sharedid&#x3D;0362b518-b56a-4a08-9f01-687b29d9e710; _lr_retry_request&#x3D;true; _lr_env_src_ats&#x3D;false; pbjs-unifiedid&#x3D;%7B%22TDID%22%3A%22b82f813d-b87d-406b-920c-4d28ffdd6e63%22%2C%22TDID_LOOKUP%22%3A%22TRUE%22%2C%22TDID_CREATED_AT%22%3A%222023-09-19T03%3A10%3A42%22%7D; pbjs-unifiedid_cst&#x3D;zix7LPQsHA%3D%3D; loginPopup&#x3D;5; _ga_L9GCR21SZ7&#x3D;GS1.3.1697684466.1.1.1697685069.27.0.0; iawpvccs&#x3D;4; iawpvc&#x3D;4; iawpvtc1m&#x3D;4; cto_bundle&#x3D;-fkA8F9VeGgzOEh2TlVBQyUyQnowREg4QkhxZlY5USUyQnRrdSUyQmQ3ZHFlSTRJJTJCTmppNmt1WCUyRlFxQWhKSlNKN1d6T0NwU3Z1RUx6WmUxSmxqOWd4RHROekZuclFJZCUyRjZQYnNyTjVoSmRpUzBpSyUyQmdGWnI3bHFVZFZ4Q3YzU1hxd0JQZmMlMkJFV0NUZjAlMkZuQm96NU9BNU14M2RVSkxaS0ElM0QlM0Q; cto_bidid&#x3D;PEgR8V9vZWpoUjBET21nT0lHSUhkZUMySG1WZUhYMDJFbGxmUUR5cFJxUTZhejNRY3lmNWFDZlJrRjlJTDRoMnNxQTFlaTJKd3U3Z3BWdmx0S3FBNXZVZU8xMEZmbUQwVUZKRXpRdFNqSFZYZ3RQdyUzRA&#39;,
+	&quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (X11; Linux x86_64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;118.0.0.0 Safari&#x2F;537.36 Edg&#x2F;118.0.2088.46&quot;,
+	&quot;sec-ch-ua-mobile&quot;: &quot;0&quot;,
+&#125;
+
+file &#x3D; open(&quot;test.tex&quot;, &quot;w+&quot;)
+
+stdin &#x3D; open(&quot;word.in&quot;, &quot;r&quot;)
+
+file.write(head)
+
+# book &#x3D; input(&quot;请输入书本:&quot;)
+
+cntbook &#x3D; int(stdin.readline())
+
+lock&#x3D;threading.Lock()
+
+def solve(word):
+	# templine.set_description(&quot;Processing &quot;+nowpage)
+	word &#x3D; word.replace(&quot; &quot;,&quot;-&quot;)
+	word &#x3D; word.replace(&quot;&#x2F;&quot;,&quot;-&quot;)
+	session &#x3D; requests.Session()
+	retry &#x3D; Retry(total&#x3D;114514, backoff_factor&#x3D;5)
+	adapter &#x3D; HTTPAdapter(max_retries&#x3D;retry)
+	session.mount(&#39;http:&#x2F;&#x2F;&#39;, adapter)
+	session.mount(&#39;https:&#x2F;&#x2F;&#39;, adapter)
+	response &#x3D; session.get(
+		&quot;https:&#x2F;&#x2F;dictionary.cambridge.org&#x2F;dictionary&#x2F;english-chinese-simplified&#x2F;&quot;
+		+ word,
+		headers&#x3D;header,
+	)
+	contentori &#x3D; BeautifulSoup(response.text, &quot;lxml&quot;)
+	try:
+		word &#x3D; contentori.find_all(&quot;span&quot;,class_&#x3D;&quot;hw dhw&quot;)[0].text
+	except:
+		print(&quot;Error occured on word &quot;+word+&quot;, please check the code or spelling.&quot;)
+	# tempfile &#x3D; open(&quot;test.out&quot;,&quot;r&quot;)
+	# temptext &#x3D; tempfile.read()
+	# tempfile.close()
+	# content &#x3D; BeautifulSoup(temptext ,&quot;lxml&quot;)
+	# print(content)
+	try:
+		lock.acquire()
+		for content1 in contentori.find_all(&quot;div&quot;, class_&#x3D;&quot;pr entry-body__el&quot;):
+			temp &#x3D; content1.find_all(&quot;div&quot;, class_&#x3D;&quot;pr dsense&quot;)
+			pronoun&#x3D;&quot;&quot;
+			try:
+				pronoun &#x3D; content1.find_all(&quot;span&quot;, class_&#x3D;&quot;pron dpron&quot;)[0].text
+			except:
+				pass
+			try:
+				part_of_speech &#x3D; content1.find_all(&quot;span&quot;, class_&#x3D;&quot;pos dsense_pos&quot;)[0].text
+			except:
+				part_of_speech &#x3D; content1.find_all(&quot;span&quot;,class_&#x3D;&quot;pos dpos&quot;)[0].text
+			attri&#x3D;&quot;&quot;
+			try:
+				attri &#x3D; content1.find_all(&quot;span&quot;, class_&#x3D;&quot;dgram&quot;)[0].text
+			except:
+				pass
+			temp2 &#x3D; content1.find_all(&quot;div&quot;,class_&#x3D;&quot;def-block ddef_block&quot;)
+			for content in temp2:
+				chinese &#x3D; content.find_all(
+					&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se break-cj&quot;
+				)[0].text
+				try:
+					attri &#x3D; content.find_all(&quot;span&quot;, class_&#x3D;&quot;dgram&quot;)[0].text
+				except:
+					pass
+				describe &#x3D; content.find_all(&quot;span&quot;, class_&#x3D;&quot;guideword dsense_gw&quot;)
+				example_ENG &#x3D; content.find_all(&quot;span&quot;, class_&#x3D;&quot;eg deg&quot;)
+				example_CHI &#x3D; content.find_all(
+					&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se hdb break-cj&quot;
+				)
+				sentence &#x3D; content.find_all(&quot;li&quot;, class_&#x3D;&quot;eg dexamp hax&quot;)
+				write(
+					file,
+					word,
+					pronoun,
+					chinese,
+					part_of_speech,
+					attri,
+					example_CHI,
+					example_ENG,
+					sentence,
+				)
+		lock.release()
+			# else:
+			# 	# content &#x3D; temp[0]
+			# 	chinese &#x3D; contentori.find_all(
+			# 		&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se break-cj&quot;
+			# 	)[0].text
+			# 	part_of_speech &#x3D; &quot;&quot;
+			# 	try:
+			# 		part_of_speech &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;pos dpos&quot;)[0].text
+			# 	except IndexError:
+			# 		part_of_speech &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;pos dsense_pos&quot;)[
+			# 			0
+			# 		].text
+			# 	attri &#x3D; &quot;&quot;
+			# 	try:
+			# 		attri &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;dgram&quot;)[0].text
+			# 	except:
+			# 		pass
+			# 	describe &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;guideword dsense_gw&quot;)
+			# 	example_ENG &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;eg deg&quot;)
+			# 	example_CHI &#x3D; contentori.find_all(
+			# 		&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se hdb break-cj&quot;
+			# 	)
+			# 	sentence &#x3D; contentori.find_all(&quot;li&quot;, class_&#x3D;&quot;eg dexamp hax&quot;)
+			# 	write(
+			# 		file,
+			# 		word,
+			# 		pronoun,
+			# 		chinese,
+			# 		part_of_speech,
+			# 		attri,
+			# 		example_CHI,
+			# 		example_ENG,
+			# 		sentence,
+			# 	)
+	except:
+		print(&quot;Error occured on word &quot;+word+&quot;, please check the code or spelling.&quot;)
+		lock.release()
+	# file.write(&quot;\n\n\n&quot;)
+
+
+for nowbook in range(cntbook):
+	book &#x3D; stdin.readline().replace(&quot;\n&quot;,&quot;&quot;)
+
+	page &#x3D; int(stdin.readline())
+
+	file.write(&quot;\\chapter&#123;&quot; + book + &quot;&#125;\n&quot;)
+
+	for i in range(page):
+		# temp &#x3D; stdin.readline().split()
+		nowpage &#x3D; stdin.readline().replace(&quot;\n&quot;, &quot;&quot;)
+		# print(&quot;processing &quot;+nowpage)
+		file.write(
+			&quot;\\textcolor[RGB]&#123;128,0,255&#125;&#123;\\section&#123;&quot;
+			+ book
+			+ &quot; &quot;
+			+ nowpage
+			+ &quot; &quot;
+			+ stdin.readline().replace(&quot;\n&quot;, &quot;&quot;)
+			+ &quot;&#125;&#125;\n&quot;
+		)
+		# file.write(&quot;\\begin&#123;enumerate&#125;\n&quot;)
+		# cnt &#x3D; int(stdin.readline())
+		cnt&#x3D;int(stdin.readline())
+		words&#x3D;[]
+		for i in range(cnt):
+			words.append(stdin.readline().replace(&quot;\n&quot;,&quot;&quot;))
+		# words &#x3D; stdin.readline()
+		threadings &#x3D; []
+		for word in words:
+			threadings.append(
+				threading.Thread(
+					target&#x3D;solve,
+					args&#x3D;[
+						word,
+					],
+				)
+			)
+		for t in threadings:
+			t.start()
+		# for t in threadings:
+			t.join()
+			
+
+
+file.write(tail)
+file.close()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>write.py:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python3</span></span><br><span class="line"><span class="comment"># encoding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">shape = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">lock=threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">write</span>(<span class="params"></span></span><br><span class="line"><span class="params">	file, <span class="comment"># 要写入的文件</span></span></span><br><span class="line"><span class="params">	word=<span class="string">&quot;&quot;</span>, <span class="comment"># 原文</span></span></span><br><span class="line"><span class="params">	pronunciation=<span class="string">&quot;&quot;</span>, <span class="comment"># 音标</span></span></span><br><span class="line"><span class="params">	chinese=<span class="string">&quot;&quot;</span>, <span class="comment"># 中文</span></span></span><br><span class="line"><span class="params">	part_of_speech=<span class="string">&quot;&quot;</span>, <span class="comment"># 词性</span></span></span><br><span class="line"><span class="params">	attri=<span class="string">&quot;&quot;</span>, <span class="comment"># 其他属性，如是否可数</span></span></span><br><span class="line"><span class="params">	example_CHN=[], <span class="comment"># 例子中文</span></span></span><br><span class="line"><span class="params">	example_ENG=[], <span class="comment"># 例子英文</span></span></span><br><span class="line"><span class="params">	sentence=[], <span class="comment"># 只有英文的例句</span></span></span><br><span class="line"><span class="params"></span>):</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ː&quot;,&quot; \\textlengthmark &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ˈ&quot;,&quot; \\textprimstress &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ɪ&quot;,&quot; \\i &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ɔ&quot;,&quot; \\textopeno &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ɒ&quot;,&quot; \\textturnscripta &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ʃ&quot;,&quot; \\textesh &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ˌ&quot;, &quot;\\textsecstress &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ʒ&quot;,&quot; \\textyogh &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ʌ&quot;,&quot; \\textturnv &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ɡ&quot;,&quot; \\textscriptg &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ɑ&quot;,&quot; \\textscripta &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ʊ&quot;,&quot; \\textupsilon &quot;)</span></span><br><span class="line">		<span class="comment"># pronunciation=pronunciation.replace(&quot;ɜ&quot;,&quot; \\textrevepsilon &quot;)</span></span><br><span class="line">		lock.acquire()</span><br><span class="line">		file.write(<span class="string">&quot;\\begin&#123;itemize&#125;\n&quot;</span>)</span><br><span class="line">		attri=attri.replace(<span class="string">&quot;C&quot;</span>,<span class="string">&quot; $ C $ &quot;</span>)</span><br><span class="line">		attri=attri.replace(<span class="string">&quot;U&quot;</span>,<span class="string">&quot; $ U $ &quot;</span>)</span><br><span class="line">		attri=attri.replace(<span class="string">&quot;I&quot;</span>,<span class="string">&quot; $ I $ &quot;</span>)</span><br><span class="line">		attri=attri.replace(<span class="string">&quot;T&quot;</span>,<span class="string">&quot; $ T $ &quot;</span>)</span><br><span class="line">		file.write(<span class="string">&quot;\\item &quot;</span>+word+<span class="string">&quot; &quot;</span>+pronunciation+<span class="string">&quot; $ &quot;</span>+part_of_speech+<span class="string">&quot; $ &quot;</span>+attri+<span class="string">&quot; &quot;</span>+chinese+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(example_CHN)&gt;<span class="number">0</span>:</span><br><span class="line">			file.write(<span class="string">&quot;\\begin&#123;itemize&#125;\n&quot;</span>)</span><br><span class="line">			<span class="keyword">while</span> <span class="built_in">len</span>(example_CHN)&gt;<span class="number">3</span>:</span><br><span class="line">				example_CHN.pop()</span><br><span class="line">				example_ENG.pop()</span><br><span class="line">			<span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(example_CHN)):</span><br><span class="line">				file.write(<span class="string">&quot;\\item[$\\diamond$] &quot;</span>)</span><br><span class="line">				file.write(example_ENG[i].text.replace(<span class="string">&quot;$&quot;</span>,<span class="string">&quot; \\$ &quot;</span>))</span><br><span class="line">				file.write(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">				file.write(example_CHN[i].text.replace(<span class="string">&quot;%&quot;</span>,<span class="string">&quot; $ \\% $ &quot;</span>))</span><br><span class="line">				file.write(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">			file.write(<span class="string">&quot;\\end&#123;itemize&#125;\n&quot;</span>)</span><br><span class="line">		<span class="comment"># if len(sentence)!=0:</span></span><br><span class="line">		<span class="comment"># 	file.write(&quot;sentence:\n&quot;)</span></span><br><span class="line">		<span class="comment"># 	file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)</span></span><br><span class="line">		<span class="comment"># 	for i in sentence:</span></span><br><span class="line">		<span class="comment"># 		file.write(&quot;\\item[$\\diamond$] &quot;)</span></span><br><span class="line">		<span class="comment"># 		file.write(i.text)</span></span><br><span class="line">		<span class="comment"># 		file.write(&quot;\n&quot;)</span></span><br><span class="line">		<span class="comment"># 	file.write(&quot;\\end&#123;itemize&#125;\n&quot;)</span></span><br><span class="line">		file.write(<span class="string">&quot;\\end&#123;itemize&#125;\n&quot;</span>)</span><br><span class="line">		lock.release()</span><br><span class="line">	<span class="keyword">except</span>:</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&quot;Error occured on word &quot;</span>+word+<span class="string">&quot;, please check the code or spelling.&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#! &#x2F;usr&#x2F;bin&#x2F;python3
+# encoding&#x3D;utf-8
+import threading
+
+shape &#x3D; &quot;&quot;
+
+lock&#x3D;threading.Lock()
+
+def write(
+	file, # 要写入的文件
+	word&#x3D;&quot;&quot;, # 原文
+	pronunciation&#x3D;&quot;&quot;, # 音标
+	chinese&#x3D;&quot;&quot;, # 中文
+	part_of_speech&#x3D;&quot;&quot;, # 词性
+	attri&#x3D;&quot;&quot;, # 其他属性，如是否可数
+	example_CHN&#x3D;[], # 例子中文
+	example_ENG&#x3D;[], # 例子英文
+	sentence&#x3D;[], # 只有英文的例句
+):
+	try:
+		# pronunciation&#x3D;pronunciation.replace(&quot;ː&quot;,&quot; \\textlengthmark &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ˈ&quot;,&quot; \\textprimstress &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ɪ&quot;,&quot; \\i &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ɔ&quot;,&quot; \\textopeno &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ɒ&quot;,&quot; \\textturnscripta &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ʃ&quot;,&quot; \\textesh &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ˌ&quot;, &quot;\\textsecstress &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ʒ&quot;,&quot; \\textyogh &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ʌ&quot;,&quot; \\textturnv &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ɡ&quot;,&quot; \\textscriptg &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ɑ&quot;,&quot; \\textscripta &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ʊ&quot;,&quot; \\textupsilon &quot;)
+		# pronunciation&#x3D;pronunciation.replace(&quot;ɜ&quot;,&quot; \\textrevepsilon &quot;)
+		lock.acquire()
+		file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)
+		attri&#x3D;attri.replace(&quot;C&quot;,&quot; $ C $ &quot;)
+		attri&#x3D;attri.replace(&quot;U&quot;,&quot; $ U $ &quot;)
+		attri&#x3D;attri.replace(&quot;I&quot;,&quot; $ I $ &quot;)
+		attri&#x3D;attri.replace(&quot;T&quot;,&quot; $ T $ &quot;)
+		file.write(&quot;\\item &quot;+word+&quot; &quot;+pronunciation+&quot; $ &quot;+part_of_speech+&quot; $ &quot;+attri+&quot; &quot;+chinese+&quot;\n&quot;)
+		if len(example_CHN)&gt;0:
+			file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)
+			while len(example_CHN)&gt;3:
+				example_CHN.pop()
+				example_ENG.pop()
+			for i in range(len(example_CHN)):
+				file.write(&quot;\\item[$\\diamond$] &quot;)
+				file.write(example_ENG[i].text.replace(&quot;$&quot;,&quot; \\$ &quot;))
+				file.write(&quot;\n&quot;)
+				file.write(example_CHN[i].text.replace(&quot;%&quot;,&quot; $ \\% $ &quot;))
+				file.write(&quot;\n&quot;)
+			file.write(&quot;\\end&#123;itemize&#125;\n&quot;)
+		# if len(sentence)!&#x3D;0:
+		# 	file.write(&quot;sentence:\n&quot;)
+		# 	file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)
+		# 	for i in sentence:
+		# 		file.write(&quot;\\item[$\\diamond$] &quot;)
+		# 		file.write(i.text)
+		# 		file.write(&quot;\n&quot;)
+		# 	file.write(&quot;\\end&#123;itemize&#125;\n&quot;)
+		file.write(&quot;\\end&#123;itemize&#125;\n&quot;)
+		lock.release()
+	except:
+		print(&quot;Error occured on word &quot;+word+&quot;, please check the code or spelling.&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -898,7 +1182,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">6.5k</span>
+                        class="white-color">7.1k</span>
             
             
             
