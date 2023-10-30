@@ -417,14 +417,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.8k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    10 Min
+                    7 Min
                 </div>
                 
 
@@ -453,22 +453,22 @@
 <p>请确保你安装了 requests、bs4、lxml模块。</p>
 <p>请将以下两个文件放到同一个目录下运行。</p>
 <p>main.py:</p>
-<pre class="line-numbers language-none"><code class="language-none">#! &#x2F;usr&#x2F;bin&#x2F;python3
-# encoding&#x3D;utf-8
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#! /usr/bin/python3</span>
+<span class="token comment"># encoding=utf-8</span>
 
-import requests, os, sys
-from bs4 import BeautifulSoup
-from write import *
-# from tqdm import tqdm
-from requests.adapters import HTTPAdapter
-from requests.packages.urllib3.util.retry import Retry
+<span class="token keyword">import</span> requests<span class="token punctuation">,</span> os<span class="token punctuation">,</span> sys
+<span class="token keyword">from</span> bs4 <span class="token keyword">import</span> BeautifulSoup
+<span class="token keyword">from</span> write <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token comment"># from tqdm import tqdm</span>
+<span class="token keyword">from</span> requests<span class="token punctuation">.</span>adapters <span class="token keyword">import</span> HTTPAdapter
+<span class="token keyword">from</span> requests<span class="token punctuation">.</span>packages<span class="token punctuation">.</span>urllib3<span class="token punctuation">.</span>util<span class="token punctuation">.</span>retry <span class="token keyword">import</span> Retry
 
-os.chdir(os.getcwd() + &quot;&#x2F;Something else&#x2F;20231019&#x2F;&quot;)
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/Something else/20231019/"</span><span class="token punctuation">)</span>
 
 
 
-head &#x3D; &quot;&quot;&quot;
-\\documentclass[a4paper,margin&#x3D;1.0cm,10.5pt]&#123;book&#125;
+head <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
+\\documentclass[a4paper,margin=1.0cm,10.5pt]&#123;book&#125;
 
 \\usepackage[UTF8]&#123;ctex&#125;
 \\usepackage&#123;tipa&#125;
@@ -477,7 +477,7 @@ head &#x3D; &quot;&quot;&quot;
 \\usepackage&#123;fontspec&#125;
 \\usepackage&#123;xcolor&#125;
 \\usepackage&#123;titlesec&#125;
-\\defaultfontfeatures&#123;Ligatures&#x3D;TeX&#125;
+\\defaultfontfeatures&#123;Ligatures=TeX&#125;
 
 \\setmainfont&#123;Times New Roman&#125;
 
@@ -485,7 +485,7 @@ head &#x3D; &quot;&quot;&quot;
 
 \\definecolor&#123;Purple&#125;&#123;rgb&#125;&#123;.256,.0,.511&#125;
 
-\\newfontfamily\\sectionfont[Color&#x3D;Purple]&#123;Times New Roman&#125;
+\\newfontfamily\\sectionfont[Color=Purple]&#123;Times New Roman&#125;
 
 \\titleformat*&#123;\\section&#125;&#123;\\large\\bfseries\\sffamily\\color&#123;Purple&#125;&#125;
 
@@ -498,249 +498,249 @@ head &#x3D; &quot;&quot;&quot;
 \\tableofcontents
 \\newpage
 \\pagenumbering&#123;arabic&#125;
-&quot;&quot;&quot;
+"""</span>
 
-tail &#x3D; &quot;&quot;&quot;\\end&#123;document&#125;&quot;&quot;&quot;
+tail <span class="token operator">=</span> <span class="token triple-quoted-string string">"""\\end&#123;document&#125;"""</span>
 
-header &#x3D; &#123;
-	&quot;Cookie&quot;: &#39;XSRF-TOKEN&#x3D;091b0a7e-7b7c-440f-82ba-7853a686d0e8; preferredDictionaries&#x3D;&quot;english-chinese-simplified,english-chinese-traditional,english,british-grammar&quot;; _ga&#x3D;GA1.3.1985437458.1697684466; _gid&#x3D;GA1.3.1397756659.1697684466; amp-access&#x3D;amp-DgWec-PNndO292HPfqJugg; _hjFirstSeen&#x3D;1; _hjSession_2790984&#x3D;eyJpZCI6Ijc4ZmUwMGE3LTM0MjQtNGNhNi1hMjYwLTE3Yjc3YmQxMTE0MSIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImluU2FtcGxlIjpmYWxzZSwic2Vzc2lvbml6ZXJCZXRhRW5hYmxlZCI6dHJ1ZX0&#x3D;; _sp_ses.7ecc&#x3D;*; OptanonConsent&#x3D;isGpcEnabled&#x3D;0&amp;datestamp&#x3D;Thu+Oct+19+2023+11%3A01%3A20+GMT%2B0800+(China+Standard+Time)&amp;version&#x3D;202308.1.0&amp;browserGpcFlag&#x3D;0&amp;isIABGlobal&#x3D;false&amp;hosts&#x3D;&amp;landingPath&#x3D;NotLandingPage&amp;groups&#x3D;C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A0&amp;AwaitingReconsent&#x3D;false; _sp_id.7ecc&#x3D;3979def0-c2d7-4674-82ae-82dabd30e180.1697684468.1.1697684480..0b270403-3325-4540-80fe-b9939b45295d....0; _hjSessionUser_2790984&#x3D;eyJpZCI6IjllMjU2Zjk3LTU5ZjAtNWNhYi1hYzI4LWUyZDlhYmIzOGY4ZiIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImV4aXN0aW5nIjp0cnVlfQ&#x3D;&#x3D;; _gat&#x3D;1; iawsc1m&#x3D;1; _sharedID&#x3D;54582c27-481b-45f6-af8b-567598974fc2; _sharedID_cst&#x3D;zix7LPQsHA%3D%3D; _pbjs_userid_consent_data&#x3D;3524755945110770; _sharedid&#x3D;0362b518-b56a-4a08-9f01-687b29d9e710; _lr_retry_request&#x3D;true; _lr_env_src_ats&#x3D;false; pbjs-unifiedid&#x3D;%7B%22TDID%22%3A%22b82f813d-b87d-406b-920c-4d28ffdd6e63%22%2C%22TDID_LOOKUP%22%3A%22TRUE%22%2C%22TDID_CREATED_AT%22%3A%222023-09-19T03%3A10%3A42%22%7D; pbjs-unifiedid_cst&#x3D;zix7LPQsHA%3D%3D; loginPopup&#x3D;5; _ga_L9GCR21SZ7&#x3D;GS1.3.1697684466.1.1.1697685069.27.0.0; iawpvccs&#x3D;4; iawpvc&#x3D;4; iawpvtc1m&#x3D;4; cto_bundle&#x3D;-fkA8F9VeGgzOEh2TlVBQyUyQnowREg4QkhxZlY5USUyQnRrdSUyQmQ3ZHFlSTRJJTJCTmppNmt1WCUyRlFxQWhKSlNKN1d6T0NwU3Z1RUx6WmUxSmxqOWd4RHROekZuclFJZCUyRjZQYnNyTjVoSmRpUzBpSyUyQmdGWnI3bHFVZFZ4Q3YzU1hxd0JQZmMlMkJFV0NUZjAlMkZuQm96NU9BNU14M2RVSkxaS0ElM0QlM0Q; cto_bidid&#x3D;PEgR8V9vZWpoUjBET21nT0lHSUhkZUMySG1WZUhYMDJFbGxmUUR5cFJxUTZhejNRY3lmNWFDZlJrRjlJTDRoMnNxQTFlaTJKd3U3Z3BWdmx0S3FBNXZVZU8xMEZmbUQwVUZKRXpRdFNqSFZYZ3RQdyUzRA&#39;,
-	&quot;User-Agent&quot;: &quot;Mozilla&#x2F;5.0 (X11; Linux x86_64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;118.0.0.0 Safari&#x2F;537.36 Edg&#x2F;118.0.2088.46&quot;,
-	&quot;sec-ch-ua-mobile&quot;: &quot;0&quot;,
-&#125;
+header <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+	<span class="token string">"Cookie"</span><span class="token punctuation">:</span> <span class="token string">'XSRF-TOKEN=091b0a7e-7b7c-440f-82ba-7853a686d0e8; preferredDictionaries="english-chinese-simplified,english-chinese-traditional,english,british-grammar"; _ga=GA1.3.1985437458.1697684466; _gid=GA1.3.1397756659.1697684466; amp-access=amp-DgWec-PNndO292HPfqJugg; _hjFirstSeen=1; _hjSession_2790984=eyJpZCI6Ijc4ZmUwMGE3LTM0MjQtNGNhNi1hMjYwLTE3Yjc3YmQxMTE0MSIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImluU2FtcGxlIjpmYWxzZSwic2Vzc2lvbml6ZXJCZXRhRW5hYmxlZCI6dHJ1ZX0=; _sp_ses.7ecc=*; OptanonConsent=isGpcEnabled=0&amp;datestamp=Thu+Oct+19+2023+11%3A01%3A20+GMT%2B0800+(China+Standard+Time)&amp;version=202308.1.0&amp;browserGpcFlag=0&amp;isIABGlobal=false&amp;hosts=&amp;landingPath=NotLandingPage&amp;groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A0&amp;AwaitingReconsent=false; _sp_id.7ecc=3979def0-c2d7-4674-82ae-82dabd30e180.1697684468.1.1697684480..0b270403-3325-4540-80fe-b9939b45295d....0; _hjSessionUser_2790984=eyJpZCI6IjllMjU2Zjk3LTU5ZjAtNWNhYi1hYzI4LWUyZDlhYmIzOGY4ZiIsImNyZWF0ZWQiOjE2OTc2ODQ0Njc0NTcsImV4aXN0aW5nIjp0cnVlfQ==; _gat=1; iawsc1m=1; _sharedID=54582c27-481b-45f6-af8b-567598974fc2; _sharedID_cst=zix7LPQsHA%3D%3D; _pbjs_userid_consent_data=3524755945110770; _sharedid=0362b518-b56a-4a08-9f01-687b29d9e710; _lr_retry_request=true; _lr_env_src_ats=false; pbjs-unifiedid=%7B%22TDID%22%3A%22b82f813d-b87d-406b-920c-4d28ffdd6e63%22%2C%22TDID_LOOKUP%22%3A%22TRUE%22%2C%22TDID_CREATED_AT%22%3A%222023-09-19T03%3A10%3A42%22%7D; pbjs-unifiedid_cst=zix7LPQsHA%3D%3D; loginPopup=5; _ga_L9GCR21SZ7=GS1.3.1697684466.1.1.1697685069.27.0.0; iawpvccs=4; iawpvc=4; iawpvtc1m=4; cto_bundle=-fkA8F9VeGgzOEh2TlVBQyUyQnowREg4QkhxZlY5USUyQnRrdSUyQmQ3ZHFlSTRJJTJCTmppNmt1WCUyRlFxQWhKSlNKN1d6T0NwU3Z1RUx6WmUxSmxqOWd4RHROekZuclFJZCUyRjZQYnNyTjVoSmRpUzBpSyUyQmdGWnI3bHFVZFZ4Q3YzU1hxd0JQZmMlMkJFV0NUZjAlMkZuQm96NU9BNU14M2RVSkxaS0ElM0QlM0Q; cto_bidid=PEgR8V9vZWpoUjBET21nT0lHSUhkZUMySG1WZUhYMDJFbGxmUUR5cFJxUTZhejNRY3lmNWFDZlJrRjlJTDRoMnNxQTFlaTJKd3U3Z3BWdmx0S3FBNXZVZU8xMEZmbUQwVUZKRXpRdFNqSFZYZ3RQdyUzRA'</span><span class="token punctuation">,</span>
+	<span class="token string">"User-Agent"</span><span class="token punctuation">:</span> <span class="token string">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.46"</span><span class="token punctuation">,</span>
+	<span class="token string">"sec-ch-ua-mobile"</span><span class="token punctuation">:</span> <span class="token string">"0"</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
 
-file &#x3D; open(&quot;test.tex&quot;, &quot;w+&quot;)
+<span class="token builtin">file</span> <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"test.tex"</span><span class="token punctuation">,</span> <span class="token string">"w+"</span><span class="token punctuation">)</span>
 
-stdin &#x3D; open(&quot;word.in&quot;, &quot;r&quot;)
+stdin <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"word.in"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
 
-file.write(head)
+<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>head<span class="token punctuation">)</span>
 
-# book &#x3D; input(&quot;请输入书本:&quot;)
+<span class="token comment"># book = input("请输入书本:")</span>
 
-cntbook &#x3D; int(stdin.readline())
+cntbook <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-lock&#x3D;threading.Lock()
+lock<span class="token operator">=</span>threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-def solve(word):
-	# templine.set_description(&quot;Processing &quot;+nowpage)
-	word &#x3D; word.replace(&quot; &quot;,&quot;-&quot;)
-	word &#x3D; word.replace(&quot;&#x2F;&quot;,&quot;-&quot;)
-	session &#x3D; requests.Session()
-	retry &#x3D; Retry(total&#x3D;114514, backoff_factor&#x3D;5)
-	adapter &#x3D; HTTPAdapter(max_retries&#x3D;retry)
-	session.mount(&#39;http:&#x2F;&#x2F;&#39;, adapter)
-	session.mount(&#39;https:&#x2F;&#x2F;&#39;, adapter)
-	response &#x3D; session.get(
-		&quot;https:&#x2F;&#x2F;dictionary.cambridge.org&#x2F;dictionary&#x2F;english-chinese-simplified&#x2F;&quot;
-		+ word,
-		headers&#x3D;header,
-	)
-	contentori &#x3D; BeautifulSoup(response.text, &quot;lxml&quot;)
-	try:
-		word &#x3D; contentori.find_all(&quot;span&quot;,class_&#x3D;&quot;hw dhw&quot;)[0].text
-	except:
-		print(&quot;Error occured on word &quot;+word+&quot;, please check the code or spelling.&quot;)
-	# tempfile &#x3D; open(&quot;test.out&quot;,&quot;r&quot;)
-	# temptext &#x3D; tempfile.read()
-	# tempfile.close()
-	# content &#x3D; BeautifulSoup(temptext ,&quot;lxml&quot;)
-	# print(content)
-	try:
-		lock.acquire()
-		for content1 in contentori.find_all(&quot;div&quot;, class_&#x3D;&quot;pr entry-body__el&quot;):
-			temp &#x3D; content1.find_all(&quot;div&quot;, class_&#x3D;&quot;pr dsense&quot;)
-			pronoun&#x3D;&quot;&quot;
-			try:
-				pronoun &#x3D; content1.find_all(&quot;span&quot;, class_&#x3D;&quot;pron dpron&quot;)[0].text
-			except:
-				pass
-			try:
-				part_of_speech &#x3D; content1.find_all(&quot;span&quot;, class_&#x3D;&quot;pos dsense_pos&quot;)[0].text
-			except:
-				part_of_speech &#x3D; content1.find_all(&quot;span&quot;,class_&#x3D;&quot;pos dpos&quot;)[0].text
-			attri&#x3D;&quot;&quot;
-			try:
-				attri &#x3D; content1.find_all(&quot;span&quot;, class_&#x3D;&quot;dgram&quot;)[0].text
-			except:
-				pass
-			temp2 &#x3D; content1.find_all(&quot;div&quot;,class_&#x3D;&quot;def-block ddef_block&quot;)
-			for content in temp2:
-				chinese &#x3D; content.find_all(
-					&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se break-cj&quot;
-				)[0].text
-				try:
-					attri &#x3D; content.find_all(&quot;span&quot;, class_&#x3D;&quot;dgram&quot;)[0].text
-				except:
-					pass
-				describe &#x3D; content.find_all(&quot;span&quot;, class_&#x3D;&quot;guideword dsense_gw&quot;)
-				example_ENG &#x3D; content.find_all(&quot;span&quot;, class_&#x3D;&quot;eg deg&quot;)
-				example_CHI &#x3D; content.find_all(
-					&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se hdb break-cj&quot;
-				)
-				sentence &#x3D; content.find_all(&quot;li&quot;, class_&#x3D;&quot;eg dexamp hax&quot;)
-				write(
-					file,
-					word,
-					pronoun,
-					chinese,
-					part_of_speech,
-					attri,
-					example_CHI,
-					example_ENG,
-					sentence,
-				)
-		lock.release()
-			# else:
-			# 	# content &#x3D; temp[0]
-			# 	chinese &#x3D; contentori.find_all(
-			# 		&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se break-cj&quot;
-			# 	)[0].text
-			# 	part_of_speech &#x3D; &quot;&quot;
-			# 	try:
-			# 		part_of_speech &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;pos dpos&quot;)[0].text
-			# 	except IndexError:
-			# 		part_of_speech &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;pos dsense_pos&quot;)[
-			# 			0
-			# 		].text
-			# 	attri &#x3D; &quot;&quot;
-			# 	try:
-			# 		attri &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;dgram&quot;)[0].text
-			# 	except:
-			# 		pass
-			# 	describe &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;guideword dsense_gw&quot;)
-			# 	example_ENG &#x3D; contentori.find_all(&quot;span&quot;, class_&#x3D;&quot;eg deg&quot;)
-			# 	example_CHI &#x3D; contentori.find_all(
-			# 		&quot;span&quot;, class_&#x3D;&quot;trans dtrans dtrans-se hdb break-cj&quot;
-			# 	)
-			# 	sentence &#x3D; contentori.find_all(&quot;li&quot;, class_&#x3D;&quot;eg dexamp hax&quot;)
-			# 	write(
-			# 		file,
-			# 		word,
-			# 		pronoun,
-			# 		chinese,
-			# 		part_of_speech,
-			# 		attri,
-			# 		example_CHI,
-			# 		example_ENG,
-			# 		sentence,
-			# 	)
-	except:
-		print(&quot;Error occured on word &quot;+word+&quot;, please check the code or spelling.&quot;)
-		lock.release()
-	# file.write(&quot;\n\n\n&quot;)
+<span class="token keyword">def</span> <span class="token function">solve</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token comment"># templine.set_description("Processing "+nowpage)</span>
+	word <span class="token operator">=</span> word<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">,</span><span class="token string">"-"</span><span class="token punctuation">)</span>
+	word <span class="token operator">=</span> word<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span><span class="token string">"-"</span><span class="token punctuation">)</span>
+	session <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	retry <span class="token operator">=</span> Retry<span class="token punctuation">(</span>total<span class="token operator">=</span><span class="token number">114514</span><span class="token punctuation">,</span> backoff_factor<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+	adapter <span class="token operator">=</span> HTTPAdapter<span class="token punctuation">(</span>max_retries<span class="token operator">=</span>retry<span class="token punctuation">)</span>
+	session<span class="token punctuation">.</span>mount<span class="token punctuation">(</span><span class="token string">'http://'</span><span class="token punctuation">,</span> adapter<span class="token punctuation">)</span>
+	session<span class="token punctuation">.</span>mount<span class="token punctuation">(</span><span class="token string">'https://'</span><span class="token punctuation">,</span> adapter<span class="token punctuation">)</span>
+	response <span class="token operator">=</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>
+		<span class="token string">"https://dictionary.cambridge.org/dictionary/english-chinese-simplified/"</span>
+		<span class="token operator">+</span> word<span class="token punctuation">,</span>
+		headers<span class="token operator">=</span>header<span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+	contentori <span class="token operator">=</span> BeautifulSoup<span class="token punctuation">(</span>response<span class="token punctuation">.</span>text<span class="token punctuation">,</span> <span class="token string">"lxml"</span><span class="token punctuation">)</span>
+	<span class="token keyword">try</span><span class="token punctuation">:</span>
+		word <span class="token operator">=</span> contentori<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span>class_<span class="token operator">=</span><span class="token string">"hw dhw"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+	<span class="token keyword">except</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Error occured on word "</span><span class="token operator">+</span>word<span class="token operator">+</span><span class="token string">", please check the code or spelling."</span><span class="token punctuation">)</span>
+	<span class="token comment"># tempfile = open("test.out","r")</span>
+	<span class="token comment"># temptext = tempfile.read()</span>
+	<span class="token comment"># tempfile.close()</span>
+	<span class="token comment"># content = BeautifulSoup(temptext ,"lxml")</span>
+	<span class="token comment"># print(content)</span>
+	<span class="token keyword">try</span><span class="token punctuation">:</span>
+		lock<span class="token punctuation">.</span>acquire<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span> content1 <span class="token keyword">in</span> contentori<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"pr entry-body__el"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+			temp <span class="token operator">=</span> content1<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"pr dsense"</span><span class="token punctuation">)</span>
+			pronoun<span class="token operator">=</span><span class="token string">""</span>
+			<span class="token keyword">try</span><span class="token punctuation">:</span>
+				pronoun <span class="token operator">=</span> content1<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"pron dpron"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+			<span class="token keyword">except</span><span class="token punctuation">:</span>
+				<span class="token keyword">pass</span>
+			<span class="token keyword">try</span><span class="token punctuation">:</span>
+				part_of_speech <span class="token operator">=</span> content1<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"pos dsense_pos"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+			<span class="token keyword">except</span><span class="token punctuation">:</span>
+				part_of_speech <span class="token operator">=</span> content1<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span>class_<span class="token operator">=</span><span class="token string">"pos dpos"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+			attri<span class="token operator">=</span><span class="token string">""</span>
+			<span class="token keyword">try</span><span class="token punctuation">:</span>
+				attri <span class="token operator">=</span> content1<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"dgram"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+			<span class="token keyword">except</span><span class="token punctuation">:</span>
+				<span class="token keyword">pass</span>
+			temp2 <span class="token operator">=</span> content1<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">,</span>class_<span class="token operator">=</span><span class="token string">"def-block ddef_block"</span><span class="token punctuation">)</span>
+			<span class="token keyword">for</span> content <span class="token keyword">in</span> temp2<span class="token punctuation">:</span>
+				chinese <span class="token operator">=</span> content<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span>
+					<span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"trans dtrans dtrans-se break-cj"</span>
+				<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+				<span class="token keyword">try</span><span class="token punctuation">:</span>
+					attri <span class="token operator">=</span> content<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"dgram"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text
+				<span class="token keyword">except</span><span class="token punctuation">:</span>
+					<span class="token keyword">pass</span>
+				describe <span class="token operator">=</span> content<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"guideword dsense_gw"</span><span class="token punctuation">)</span>
+				example_ENG <span class="token operator">=</span> content<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"eg deg"</span><span class="token punctuation">)</span>
+				example_CHI <span class="token operator">=</span> content<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span>
+					<span class="token string">"span"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"trans dtrans dtrans-se hdb break-cj"</span>
+				<span class="token punctuation">)</span>
+				sentence <span class="token operator">=</span> content<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">"li"</span><span class="token punctuation">,</span> class_<span class="token operator">=</span><span class="token string">"eg dexamp hax"</span><span class="token punctuation">)</span>
+				write<span class="token punctuation">(</span>
+					<span class="token builtin">file</span><span class="token punctuation">,</span>
+					word<span class="token punctuation">,</span>
+					pronoun<span class="token punctuation">,</span>
+					chinese<span class="token punctuation">,</span>
+					part_of_speech<span class="token punctuation">,</span>
+					attri<span class="token punctuation">,</span>
+					example_CHI<span class="token punctuation">,</span>
+					example_ENG<span class="token punctuation">,</span>
+					sentence<span class="token punctuation">,</span>
+				<span class="token punctuation">)</span>
+		lock<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token comment"># else:</span>
+			<span class="token comment"># 	# content = temp[0]</span>
+			<span class="token comment"># 	chinese = contentori.find_all(</span>
+			<span class="token comment"># 		"span", class_="trans dtrans dtrans-se break-cj"</span>
+			<span class="token comment"># 	)[0].text</span>
+			<span class="token comment"># 	part_of_speech = ""</span>
+			<span class="token comment"># 	try:</span>
+			<span class="token comment"># 		part_of_speech = contentori.find_all("span", class_="pos dpos")[0].text</span>
+			<span class="token comment"># 	except IndexError:</span>
+			<span class="token comment"># 		part_of_speech = contentori.find_all("span", class_="pos dsense_pos")[</span>
+			<span class="token comment"># 			0</span>
+			<span class="token comment"># 		].text</span>
+			<span class="token comment"># 	attri = ""</span>
+			<span class="token comment"># 	try:</span>
+			<span class="token comment"># 		attri = contentori.find_all("span", class_="dgram")[0].text</span>
+			<span class="token comment"># 	except:</span>
+			<span class="token comment"># 		pass</span>
+			<span class="token comment"># 	describe = contentori.find_all("span", class_="guideword dsense_gw")</span>
+			<span class="token comment"># 	example_ENG = contentori.find_all("span", class_="eg deg")</span>
+			<span class="token comment"># 	example_CHI = contentori.find_all(</span>
+			<span class="token comment"># 		"span", class_="trans dtrans dtrans-se hdb break-cj"</span>
+			<span class="token comment"># 	)</span>
+			<span class="token comment"># 	sentence = contentori.find_all("li", class_="eg dexamp hax")</span>
+			<span class="token comment"># 	write(</span>
+			<span class="token comment"># 		file,</span>
+			<span class="token comment"># 		word,</span>
+			<span class="token comment"># 		pronoun,</span>
+			<span class="token comment"># 		chinese,</span>
+			<span class="token comment"># 		part_of_speech,</span>
+			<span class="token comment"># 		attri,</span>
+			<span class="token comment"># 		example_CHI,</span>
+			<span class="token comment"># 		example_ENG,</span>
+			<span class="token comment"># 		sentence,</span>
+			<span class="token comment"># 	)</span>
+	<span class="token keyword">except</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Error occured on word "</span><span class="token operator">+</span>word<span class="token operator">+</span><span class="token string">", please check the code or spelling."</span><span class="token punctuation">)</span>
+		lock<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token comment"># file.write("\n\n\n")</span>
 
 
-for nowbook in range(cntbook):
-	book &#x3D; stdin.readline().replace(&quot;\n&quot;,&quot;&quot;)
+<span class="token keyword">for</span> nowbook <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cntbook<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	book <span class="token operator">=</span> stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span>
 
-	page &#x3D; int(stdin.readline())
+	page <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-	file.write(&quot;\\chapter&#123;&quot; + book + &quot;&#125;\n&quot;)
+	<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\chapter&#123;"</span> <span class="token operator">+</span> book <span class="token operator">+</span> <span class="token string">"&#125;\n"</span><span class="token punctuation">)</span>
 
-	for i in range(page):
-		# temp &#x3D; stdin.readline().split()
-		nowpage &#x3D; stdin.readline().replace(&quot;\n&quot;, &quot;&quot;)
-		# print(&quot;processing &quot;+nowpage)
-		file.write(
-			&quot;\\textcolor[RGB]&#123;128,0,255&#125;&#123;\\section&#123;&quot;
-			+ book
-			+ &quot; &quot;
-			+ nowpage
-			+ &quot; &quot;
-			+ stdin.readline().replace(&quot;\n&quot;, &quot;&quot;)
-			+ &quot;&#125;&#125;\n&quot;
-		)
-		# file.write(&quot;\\begin&#123;enumerate&#125;\n&quot;)
-		# cnt &#x3D; int(stdin.readline())
-		cnt&#x3D;int(stdin.readline())
-		words&#x3D;[]
-		for i in range(cnt):
-			words.append(stdin.readline().replace(&quot;\n&quot;,&quot;&quot;))
-		# words &#x3D; stdin.readline()
-		threadings &#x3D; []
-		for word in words:
-			threadings.append(
-				threading.Thread(
-					target&#x3D;solve,
-					args&#x3D;[
-						word,
-					],
-				)
-			)
-		for t in threadings:
-			t.start()
-		# for t in threadings:
-			t.join()
+	<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		<span class="token comment"># temp = stdin.readline().split()</span>
+		nowpage <span class="token operator">=</span> stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span>
+		<span class="token comment"># print("processing "+nowpage)</span>
+		<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>
+			<span class="token string">"\\textcolor[RGB]&#123;128,0,255&#125;&#123;\\section&#123;"</span>
+			<span class="token operator">+</span> book
+			<span class="token operator">+</span> <span class="token string">" "</span>
+			<span class="token operator">+</span> nowpage
+			<span class="token operator">+</span> <span class="token string">" "</span>
+			<span class="token operator">+</span> stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span>
+			<span class="token operator">+</span> <span class="token string">"&#125;&#125;\n"</span>
+		<span class="token punctuation">)</span>
+		<span class="token comment"># file.write("\\begin&#123;enumerate&#125;\n")</span>
+		<span class="token comment"># cnt = int(stdin.readline())</span>
+		cnt<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span>stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		words<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cnt<span class="token punctuation">)</span><span class="token punctuation">:</span>
+			words<span class="token punctuation">.</span>append<span class="token punctuation">(</span>stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token comment"># words = stdin.readline()</span>
+		threadings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+		<span class="token keyword">for</span> word <span class="token keyword">in</span> words<span class="token punctuation">:</span>
+			threadings<span class="token punctuation">.</span>append<span class="token punctuation">(</span>
+				threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>
+					target<span class="token operator">=</span>solve<span class="token punctuation">,</span>
+					args<span class="token operator">=</span><span class="token punctuation">[</span>
+						word<span class="token punctuation">,</span>
+					<span class="token punctuation">]</span><span class="token punctuation">,</span>
+				<span class="token punctuation">)</span>
+			<span class="token punctuation">)</span>
+		<span class="token keyword">for</span> t <span class="token keyword">in</span> threadings<span class="token punctuation">:</span>
+			t<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token comment"># for t in threadings:</span>
+			t<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
 			
 
 
-file.write(tail)
-file.close()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>tail<span class="token punctuation">)</span>
+<span class="token builtin">file</span><span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>write.py:</p>
-<pre class="line-numbers language-none"><code class="language-none">#! &#x2F;usr&#x2F;bin&#x2F;python3
-# encoding&#x3D;utf-8
-import threading
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#! /usr/bin/python3</span>
+<span class="token comment"># encoding=utf-8</span>
+<span class="token keyword">import</span> threading
 
-shape &#x3D; &quot;&quot;
+shape <span class="token operator">=</span> <span class="token string">""</span>
 
-lock&#x3D;threading.Lock()
+lock<span class="token operator">=</span>threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-def write(
-	file, # 要写入的文件
-	word&#x3D;&quot;&quot;, # 原文
-	pronunciation&#x3D;&quot;&quot;, # 音标
-	chinese&#x3D;&quot;&quot;, # 中文
-	part_of_speech&#x3D;&quot;&quot;, # 词性
-	attri&#x3D;&quot;&quot;, # 其他属性，如是否可数
-	example_CHN&#x3D;[], # 例子中文
-	example_ENG&#x3D;[], # 例子英文
-	sentence&#x3D;[], # 只有英文的例句
-):
-	try:
-		# pronunciation&#x3D;pronunciation.replace(&quot;ː&quot;,&quot; \\textlengthmark &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ˈ&quot;,&quot; \\textprimstress &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ɪ&quot;,&quot; \\i &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ɔ&quot;,&quot; \\textopeno &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ɒ&quot;,&quot; \\textturnscripta &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ʃ&quot;,&quot; \\textesh &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ˌ&quot;, &quot;\\textsecstress &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ʒ&quot;,&quot; \\textyogh &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ʌ&quot;,&quot; \\textturnv &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ɡ&quot;,&quot; \\textscriptg &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ɑ&quot;,&quot; \\textscripta &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ʊ&quot;,&quot; \\textupsilon &quot;)
-		# pronunciation&#x3D;pronunciation.replace(&quot;ɜ&quot;,&quot; \\textrevepsilon &quot;)
-		lock.acquire()
-		file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)
-		attri&#x3D;attri.replace(&quot;C&quot;,&quot; $ C $ &quot;)
-		attri&#x3D;attri.replace(&quot;U&quot;,&quot; $ U $ &quot;)
-		attri&#x3D;attri.replace(&quot;I&quot;,&quot; $ I $ &quot;)
-		attri&#x3D;attri.replace(&quot;T&quot;,&quot; $ T $ &quot;)
-		file.write(&quot;\\item &quot;+word+&quot; &quot;+pronunciation+&quot; $ &quot;+part_of_speech+&quot; $ &quot;+attri+&quot; &quot;+chinese+&quot;\n&quot;)
-		if len(example_CHN)&gt;0:
-			file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)
-			while len(example_CHN)&gt;3:
-				example_CHN.pop()
-				example_ENG.pop()
-			for i in range(len(example_CHN)):
-				file.write(&quot;\\item[$\\diamond$] &quot;)
-				file.write(example_ENG[i].text.replace(&quot;$&quot;,&quot; \\$ &quot;))
-				file.write(&quot;\n&quot;)
-				file.write(example_CHN[i].text.replace(&quot;%&quot;,&quot; $ \\% $ &quot;))
-				file.write(&quot;\n&quot;)
-			file.write(&quot;\\end&#123;itemize&#125;\n&quot;)
-		# if len(sentence)!&#x3D;0:
-		# 	file.write(&quot;sentence:\n&quot;)
-		# 	file.write(&quot;\\begin&#123;itemize&#125;\n&quot;)
-		# 	for i in sentence:
-		# 		file.write(&quot;\\item[$\\diamond$] &quot;)
-		# 		file.write(i.text)
-		# 		file.write(&quot;\n&quot;)
-		# 	file.write(&quot;\\end&#123;itemize&#125;\n&quot;)
-		file.write(&quot;\\end&#123;itemize&#125;\n&quot;)
-		lock.release()
-	except:
-		print(&quot;Error occured on word &quot;+word+&quot;, please check the code or spelling.&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">def</span> <span class="token function">write</span><span class="token punctuation">(</span>
+	<span class="token builtin">file</span><span class="token punctuation">,</span> <span class="token comment"># 要写入的文件</span>
+	word<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># 原文</span>
+	pronunciation<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># 音标</span>
+	chinese<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># 中文</span>
+	part_of_speech<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># 词性</span>
+	attri<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment"># 其他属性，如是否可数</span>
+	example_CHN<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment"># 例子中文</span>
+	example_ENG<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment"># 例子英文</span>
+	sentence<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment"># 只有英文的例句</span>
+<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">try</span><span class="token punctuation">:</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ː"," \\textlengthmark ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ˈ"," \\textprimstress ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ɪ"," \\i ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ɔ"," \\textopeno ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ɒ"," \\textturnscripta ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ʃ"," \\textesh ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ˌ", "\\textsecstress ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ʒ"," \\textyogh ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ʌ"," \\textturnv ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ɡ"," \\textscriptg ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ɑ"," \\textscripta ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ʊ"," \\textupsilon ")</span>
+		<span class="token comment"># pronunciation=pronunciation.replace("ɜ"," \\textrevepsilon ")</span>
+		lock<span class="token punctuation">.</span>acquire<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\begin&#123;itemize&#125;\n"</span><span class="token punctuation">)</span>
+		attri<span class="token operator">=</span>attri<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">,</span><span class="token string">" $ C $ "</span><span class="token punctuation">)</span>
+		attri<span class="token operator">=</span>attri<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"U"</span><span class="token punctuation">,</span><span class="token string">" $ U $ "</span><span class="token punctuation">)</span>
+		attri<span class="token operator">=</span>attri<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"I"</span><span class="token punctuation">,</span><span class="token string">" $ I $ "</span><span class="token punctuation">)</span>
+		attri<span class="token operator">=</span>attri<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"T"</span><span class="token punctuation">,</span><span class="token string">" $ T $ "</span><span class="token punctuation">)</span>
+		<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\item "</span><span class="token operator">+</span>word<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>pronunciation<span class="token operator">+</span><span class="token string">" $ "</span><span class="token operator">+</span>part_of_speech<span class="token operator">+</span><span class="token string">" $ "</span><span class="token operator">+</span>attri<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>chinese<span class="token operator">+</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+		<span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>example_CHN<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">:</span>
+			<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\begin&#123;itemize&#125;\n"</span><span class="token punctuation">)</span>
+			<span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>example_CHN<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">3</span><span class="token punctuation">:</span>
+				example_CHN<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+				example_ENG<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>example_CHN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+				<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\item[$\\diamond$] "</span><span class="token punctuation">)</span>
+				<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>example_ENG<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"$"</span><span class="token punctuation">,</span><span class="token string">" \\$ "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+				<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+				<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>example_CHN<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"%"</span><span class="token punctuation">,</span><span class="token string">" $ \\% $ "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+				<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span>
+			<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\end&#123;itemize&#125;\n"</span><span class="token punctuation">)</span>
+		<span class="token comment"># if len(sentence)!=0:</span>
+		<span class="token comment"># 	file.write("sentence:\n")</span>
+		<span class="token comment"># 	file.write("\\begin&#123;itemize&#125;\n")</span>
+		<span class="token comment"># 	for i in sentence:</span>
+		<span class="token comment"># 		file.write("\\item[$\\diamond$] ")</span>
+		<span class="token comment"># 		file.write(i.text)</span>
+		<span class="token comment"># 		file.write("\n")</span>
+		<span class="token comment"># 	file.write("\\end&#123;itemize&#125;\n")</span>
+		<span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">"\\end&#123;itemize&#125;\n"</span><span class="token punctuation">)</span>
+		lock<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">except</span><span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Error occured on word "</span><span class="token operator">+</span>word<span class="token operator">+</span><span class="token string">", please check the code or spelling."</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1182,7 +1182,7 @@ def write(
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">7.1k</span>
+                        class="white-color">5.8k</span>
             
             
             

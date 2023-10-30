@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="红黑树模板 (Red-Black Tree), Hexo">
     <meta name="description" content="理论上来说根据 GPL v2 可以自由分发，所以在这里贴上作者应该就不是什么大问题了（确信）
-&amp;#x2F;&amp;#x2F; SPDX-License-Identifier: GPL-2.0-or-later
-&amp;#x2F;*
-  Red Blac">
+// SPDX-License-Identifier: GPL-2.0-or-later
+/*
+  Red Black Trees
+  (C) 1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -423,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.6k
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    15 Min
+                    13 Min
                 </div>
                 
 
@@ -454,22 +455,22 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>理论上来说根据 GPL v2 可以自由分发，所以在这里贴上作者应该就不是什么大问题了（确信）</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; SPDX-License-Identifier: GPL-2.0-or-later
-&#x2F;*
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// SPDX-License-Identifier: GPL-2.0-or-later</span>
+<span class="token comment">/*
   Red Black Trees
-  (C) 1999  Andrea Arcangeli &lt;andrea@suse.de&gt;
-  (C) 2002  David Woodhouse &lt;dwmw2@infradead.org&gt;
-  (C) 2012  Michel Lespinasse &lt;walken@google.com&gt;
+  (C) 1999  Andrea Arcangeli &lt;andrea@suse.de>
+  (C) 2002  David Woodhouse &lt;dwmw2@infradead.org>
+  (C) 2012  Michel Lespinasse &lt;walken@google.com>
 
 
-  linux&#x2F;lib&#x2F;rbtree.c
-*&#x2F;
+  linux/lib/rbtree.c
+*/</span>
 
-&#x2F;&#x2F; #include &lt;linux&#x2F;rbtree_augmented.h&gt;
-&#x2F;&#x2F; #include &lt;linux&#x2F;export.h&gt;
+<span class="token comment">// #include &lt;linux/rbtree_augmented.h></span>
+<span class="token comment">// #include &lt;linux/export.h></span>
 
-&#x2F;*
- * red-black trees properties:  https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Rbtree
+<span class="token comment">/*
+ * red-black trees properties:  https://en.wikipedia.org/wiki/Rbtree
  *
  *  1) A node is either red or black
  *  2) The root is black
@@ -486,9 +487,9 @@
  *  We shall indicate color with case, where black nodes are uppercase and red
  *  nodes will be lowercase. Unknown color nodes shall be drawn as red within
  *  parentheses and have some accompanying text comment.
- *&#x2F;
+ */</span>
 
-&#x2F;*
+<span class="token comment">/*
  * Notes on lockless lookups:
  *
  * All stores to the tree structure (rb_left and rb_right) must be done using
@@ -502,257 +503,257 @@
  * But they do guarantee that any such traversal will only see valid elements
  * and that it will indeed complete -- does not get stuck in a loop.
  *
- * It also guarantees that if the lookup returns an element it is the &#39;correct&#39;
- * one. But not returning an element does _NOT_ mean it&#39;s not present.
+ * It also guarantees that if the lookup returns an element it is the 'correct'
+ * one. But not returning an element does _NOT_ mean it's not present.
  *
  * NOTE:
  *
  * Stores to __rb_parent_color are not important for simple lookups so those
  * are left undone as of now. Nor did I check for loops involving parent
  * pointers.
- *&#x2F;
+ */</span>
 
-static inline void rb_set_black(struct rb_node *rb)
-&#123;
-	rb-&gt;__rb_parent_color +&#x3D; RB_BLACK;
-&#125;
+<span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">rb_set_black</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>rb<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	rb<span class="token operator">-></span>__rb_parent_color <span class="token operator">+=</span> RB_BLACK<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-static inline struct rb_node *rb_red_parent(struct rb_node *red)
-&#123;
-	return (struct rb_node *)red-&gt;__rb_parent_color;
-&#125;
+<span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_red_parent</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>red<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token punctuation">)</span>red<span class="token operator">-></span>__rb_parent_color<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;*
+<span class="token comment">/*
  * Helper function for rotations:
- * - old&#39;s parent and color get assigned to new
- * - old gets assigned new as a parent and &#39;color&#39; as a color.
- *&#x2F;
-static inline void
-__rb_rotate_set_parents(struct rb_node *old, struct rb_node *new,
-			struct rb_root *root, int color)
-&#123;
-	struct rb_node *parent &#x3D; rb_parent(old);
-	new-&gt;__rb_parent_color &#x3D; old-&gt;__rb_parent_color;
-	rb_set_parent_color(old, new, color);
-	__rb_change_child(old, new, parent, root);
-&#125;
+ * - old's parent and color get assigned to new
+ * - old gets assigned new as a parent and 'color' as a color.
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">void</span>
+<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">,</span>
+			<span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">,</span> <span class="token keyword">int</span> color<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>old<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">new</span><span class="token operator">-></span>__rb_parent_color <span class="token operator">=</span> old<span class="token operator">-></span>__rb_parent_color<span class="token punctuation">;</span>
+	<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>old<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">__rb_change_child</span><span class="token punctuation">(</span>old<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">,</span> parent<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-static __always_inline void
-__rb_insert(struct rb_node *node, struct rb_root *root,
-	    void (*augment_rotate)(struct rb_node *old, struct rb_node *new))
-&#123;
-	struct rb_node *parent &#x3D; rb_red_parent(node), *gparent, *tmp;
+<span class="token keyword">static</span> __always_inline <span class="token keyword">void</span>
+<span class="token function">__rb_insert</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">,</span>
+	    <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>augment_rotate<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token function">rb_red_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span>gparent<span class="token punctuation">,</span> <span class="token operator">*</span>tmp<span class="token punctuation">;</span>
 
-	while (true) &#123;
-		&#x2F;*
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token comment">/*
 		 * Loop invariant: node is red.
-		 *&#x2F;
-		if (unlikely(!parent)) &#123;
-			&#x2F;*
+		 */</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">unlikely</span><span class="token punctuation">(</span><span class="token operator">!</span>parent<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token comment">/*
 			 * The inserted node is root. Either this is the
 			 * first node, or we recursed at Case 1 below and
 			 * are no longer violating 4).
-			 *&#x2F;
-			rb_set_parent_color(node, NULL, RB_BLACK);
-			break;
-		&#125;
+			 */</span>
+			<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
 
-		&#x2F;*
+		<span class="token comment">/*
 		 * If there is a black parent, we are done.
 		 * Otherwise, take some corrective action as,
-		 * per 4), we don&#39;t want a red root or two
+		 * per 4), we don't want a red root or two
 		 * consecutive red nodes.
-		 *&#x2F;
-		if(rb_is_black(parent))
-			break;
+		 */</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">rb_is_black</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
 
-		gparent &#x3D; rb_red_parent(parent);
+		gparent <span class="token operator">=</span> <span class="token function">rb_red_parent</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-		tmp &#x3D; gparent-&gt;rb_right;
-		if (parent !&#x3D; tmp) &#123;	&#x2F;* parent &#x3D;&#x3D; gparent-&gt;rb_left *&#x2F;
-			if (tmp &amp;&amp; rb_is_red(tmp)) &#123;
-				&#x2F;*
-				 * Case 1 - node&#39;s uncle is red (color flips).
+		tmp <span class="token operator">=</span> gparent<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">!=</span> tmp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	<span class="token comment">/* parent == gparent->rb_left */</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp <span class="token operator">&amp;&amp;</span> <span class="token function">rb_is_red</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token comment">/*
+				 * Case 1 - node's uncle is red (color flips).
 				 *
 				 *       G            g
-				 *      &#x2F; \          &#x2F; \
-				 *     p   u  --&gt;   P   U
-				 *    &#x2F;            &#x2F;
+				 *      / \          / \
+				 *     p   u  -->   P   U
+				 *    /            /
 				 *   n            n
 				 *
-				 * However, since g&#39;s parent might be red, and
+				 * However, since g's parent might be red, and
 				 * 4) does not allow this, we need to recurse
 				 * at g.
-				 *&#x2F;
-				rb_set_parent_color(tmp, gparent, RB_BLACK);
-				rb_set_parent_color(parent, gparent, RB_BLACK);
-				node &#x3D; gparent;
-				parent &#x3D; rb_parent(node);
-				rb_set_parent_color(node, parent, RB_RED);
-				continue;
-			&#125;
+				 */</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> gparent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> gparent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				node <span class="token operator">=</span> gparent<span class="token punctuation">;</span>
+				parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">continue</span><span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
 
-			tmp &#x3D; parent-&gt;rb_right;
-			if (node &#x3D;&#x3D; tmp) &#123;
-				&#x2F;*
-				 * Case 2 - node&#39;s uncle is black and node is
-				 * the parent&#39;s right child (left rotate at parent).
+			tmp <span class="token operator">=</span> parent<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> tmp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token comment">/*
+				 * Case 2 - node's uncle is black and node is
+				 * the parent's right child (left rotate at parent).
 				 *
 				 *      G             G
-				 *     &#x2F; \           &#x2F; \
-				 *    p   U  --&gt;    n   U
-				 *     \           &#x2F;
+				 *     / \           / \
+				 *    p   U  -->    n   U
+				 *     \           /
 				 *      n         p
 				 *
 				 * This still leaves us in violation of 4), the
 				 * continuation into Case 3 will fix that.
-				 *&#x2F;
-				tmp &#x3D; node-&gt;rb_left;
-				WRITE_ONCE(parent-&gt;rb_right, tmp);
-				WRITE_ONCE(node-&gt;rb_left, parent);
-				if (tmp)
-					rb_set_parent_color(tmp, parent,
-							    RB_BLACK);
-				rb_set_parent_color(parent, node, RB_RED);
-				augment_rotate(parent, node);
-				parent &#x3D; node;
-				tmp &#x3D; node-&gt;rb_right;
-			&#125;
+				 */</span>
+				tmp <span class="token operator">=</span> node<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>node<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp<span class="token punctuation">)</span>
+					<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> parent<span class="token punctuation">,</span>
+							    RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> node<span class="token punctuation">,</span> RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">augment_rotate</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				parent <span class="token operator">=</span> node<span class="token punctuation">;</span>
+				tmp <span class="token operator">=</span> node<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
 
-			&#x2F;*
-			 * Case 3 - node&#39;s uncle is black and node is
-			 * the parent&#39;s left child (right rotate at gparent).
+			<span class="token comment">/*
+			 * Case 3 - node's uncle is black and node is
+			 * the parent's left child (right rotate at gparent).
 			 *
 			 *        G           P
-			 *       &#x2F; \         &#x2F; \
-			 *      p   U  --&gt;  n   g
-			 *     &#x2F;                 \
+			 *       / \         / \
+			 *      p   U  -->  n   g
+			 *     /                 \
 			 *    n                   U
-			 *&#x2F;
-			WRITE_ONCE(gparent-&gt;rb_left, tmp); &#x2F;* &#x3D;&#x3D; parent-&gt;rb_right *&#x2F;
-			WRITE_ONCE(parent-&gt;rb_right, gparent);
-			if (tmp)
-				rb_set_parent_color(tmp, gparent, RB_BLACK);
-			__rb_rotate_set_parents(gparent, parent, root, RB_RED);
-			augment_rotate(gparent, parent);
-			break;
-		&#125; else &#123;
-			tmp &#x3D; gparent-&gt;rb_left;
-			if (tmp &amp;&amp; rb_is_red(tmp)) &#123;
-				&#x2F;* Case 1 - color flips *&#x2F;
-				rb_set_parent_color(tmp, gparent, RB_BLACK);
-				rb_set_parent_color(parent, gparent, RB_BLACK);
-				node &#x3D; gparent;
-				parent &#x3D; rb_parent(node);
-				rb_set_parent_color(node, parent, RB_RED);
-				continue;
-			&#125;
+			 */</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>gparent<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* == parent->rb_right */</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> gparent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp<span class="token punctuation">)</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> gparent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span>gparent<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> root<span class="token punctuation">,</span> RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">augment_rotate</span><span class="token punctuation">(</span>gparent<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+			tmp <span class="token operator">=</span> gparent<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp <span class="token operator">&amp;&amp;</span> <span class="token function">rb_is_red</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token comment">/* Case 1 - color flips */</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> gparent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> gparent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				node <span class="token operator">=</span> gparent<span class="token punctuation">;</span>
+				parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">continue</span><span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
 
-			tmp &#x3D; parent-&gt;rb_left;
-			if (node &#x3D;&#x3D; tmp) &#123;
-				&#x2F;* Case 2 - right rotate at parent *&#x2F;
-				tmp &#x3D; node-&gt;rb_right;
-				WRITE_ONCE(parent-&gt;rb_left, tmp);
-				WRITE_ONCE(node-&gt;rb_right, parent);
-				if (tmp)
-					rb_set_parent_color(tmp, parent,
-							    RB_BLACK);
-				rb_set_parent_color(parent, node, RB_RED);
-				augment_rotate(parent, node);
-				parent &#x3D; node;
-				tmp &#x3D; node-&gt;rb_left;
-			&#125;
+			tmp <span class="token operator">=</span> parent<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> tmp<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token comment">/* Case 2 - right rotate at parent */</span>
+				tmp <span class="token operator">=</span> node<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>node<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp<span class="token punctuation">)</span>
+					<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> parent<span class="token punctuation">,</span>
+							    RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> node<span class="token punctuation">,</span> RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">augment_rotate</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				parent <span class="token operator">=</span> node<span class="token punctuation">;</span>
+				tmp <span class="token operator">=</span> node<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
 
-			&#x2F;* Case 3 - left rotate at gparent *&#x2F;
-			WRITE_ONCE(gparent-&gt;rb_right, tmp); &#x2F;* &#x3D;&#x3D; parent-&gt;rb_left *&#x2F;
-			WRITE_ONCE(parent-&gt;rb_left, gparent);
-			if (tmp)
-				rb_set_parent_color(tmp, gparent, RB_BLACK);
-			__rb_rotate_set_parents(gparent, parent, root, RB_RED);
-			augment_rotate(gparent, parent);
-			break;
-		&#125;
-	&#125;
-&#125;
+			<span class="token comment">/* Case 3 - left rotate at gparent */</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>gparent<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* == parent->rb_left */</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> gparent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp<span class="token punctuation">)</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp<span class="token punctuation">,</span> gparent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span>gparent<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> root<span class="token punctuation">,</span> RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">augment_rotate</span><span class="token punctuation">(</span>gparent<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;*
+<span class="token comment">/*
  * Inline version for rb_erase() use - we want to be able to inline
  * and eliminate the dummy_rotate callback there
- *&#x2F;
-static __always_inline void
-____rb_erase_color(struct rb_node *parent, struct rb_root *root,
-	void (*augment_rotate)(struct rb_node *old, struct rb_node *new))
-&#123;
-	struct rb_node *node &#x3D; NULL, *sibling, *tmp1, *tmp2;
+ */</span>
+<span class="token keyword">static</span> __always_inline <span class="token keyword">void</span>
+<span class="token function">____rb_erase_color</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">,</span>
+	<span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>augment_rotate<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token operator">*</span>sibling<span class="token punctuation">,</span> <span class="token operator">*</span>tmp1<span class="token punctuation">,</span> <span class="token operator">*</span>tmp2<span class="token punctuation">;</span>
 
-	while (true) &#123;
-		&#x2F;*
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token comment">/*
 		 * Loop invariants:
 		 * - node is black (or NULL on first iteration)
 		 * - node is not the root (parent is not NULL)
 		 * - All leaf paths going through parent and node have a
 		 *   black node count that is 1 lower than other leaf paths.
-		 *&#x2F;
-		sibling &#x3D; parent-&gt;rb_right;
-		if (node !&#x3D; sibling) &#123;	&#x2F;* node &#x3D;&#x3D; parent-&gt;rb_left *&#x2F;
-			if (rb_is_red(sibling)) &#123;
-				&#x2F;*
+		 */</span>
+		sibling <span class="token operator">=</span> parent<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">!=</span> sibling<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	<span class="token comment">/* node == parent->rb_left */</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">rb_is_red</span><span class="token punctuation">(</span>sibling<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token comment">/*
 				 * Case 1 - left rotate at parent
 				 *
 				 *     P               S
-				 *    &#x2F; \             &#x2F; \
-				 *   N   s    --&gt;    p   Sr
-				 *      &#x2F; \         &#x2F; \
+				 *    / \             / \
+				 *   N   s    -->    p   Sr
+				 *      / \         / \
 				 *     Sl  Sr      N   Sl
-				 *&#x2F;
-				tmp1 &#x3D; sibling-&gt;rb_left;
-				WRITE_ONCE(parent-&gt;rb_right, tmp1);
-				WRITE_ONCE(sibling-&gt;rb_left, parent);
-				rb_set_parent_color(tmp1, parent, RB_BLACK);
-				__rb_rotate_set_parents(parent, sibling, root,
-							RB_RED);
-				augment_rotate(parent, sibling);
-				sibling &#x3D; tmp1;
-			&#125;
-			tmp1 &#x3D; sibling-&gt;rb_right;
-			if (!tmp1 || rb_is_black(tmp1)) &#123;
-				tmp2 &#x3D; sibling-&gt;rb_left;
-				if (!tmp2 || rb_is_black(tmp2)) &#123;
-					&#x2F;*
+				 */</span>
+				tmp1 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> tmp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>sibling<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span> root<span class="token punctuation">,</span>
+							RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">augment_rotate</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				sibling <span class="token operator">=</span> tmp1<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+			tmp1 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>tmp1 <span class="token operator">||</span> <span class="token function">rb_is_black</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				tmp2 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>tmp2 <span class="token operator">||</span> <span class="token function">rb_is_black</span><span class="token punctuation">(</span>tmp2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+					<span class="token comment">/*
 					 * Case 2 - sibling color flip
 					 * (p could be either color here)
 					 *
 					 *    (p)           (p)
-					 *    &#x2F; \           &#x2F; \
-					 *   N   S    --&gt;  N   s
-					 *      &#x2F; \           &#x2F; \
+					 *    / \           / \
+					 *   N   S    -->  N   s
+					 *      / \           / \
 					 *     Sl  Sr        Sl  Sr
 					 *
 					 * This leaves us violating 5) which
 					 * can be fixed by flipping p to black
 					 * if it was red, or by recursing at p.
 					 * p is red when coming from Case 1.
-					 *&#x2F;
-					rb_set_parent_color(sibling, parent,
-							    RB_RED);
-					if (rb_is_red(parent))
-						rb_set_black(parent);
-					else &#123;
-						node &#x3D; parent;
-						parent &#x3D; rb_parent(node);
-						if (parent)
-							continue;
-					&#125;
-					break;
-				&#125;
-				&#x2F;*
+					 */</span>
+					<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>sibling<span class="token punctuation">,</span> parent<span class="token punctuation">,</span>
+							    RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">rb_is_red</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">)</span>
+						<span class="token function">rb_set_black</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+						node <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+						parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token punctuation">)</span>
+							<span class="token keyword">continue</span><span class="token punctuation">;</span>
+					<span class="token punctuation">&#125;</span>
+					<span class="token keyword">break</span><span class="token punctuation">;</span>
+				<span class="token punctuation">&#125;</span>
+				<span class="token comment">/*
 				 * Case 3 - right rotate at sibling
 				 * (p could be either color here)
 				 *
 				 *   (p)           (p)
-				 *   &#x2F; \           &#x2F; \
-				 *  N   S    --&gt;  N   sl
-				 *     &#x2F; \             \
+				 *   / \           / \
+				 *  N   S    -->  N   sl
+				 *     / \             \
 				 *    sl  Sr            S
 				 *                       \
 				 *                        Sr
@@ -765,325 +766,325 @@ ____rb_erase_color(struct rb_node *parent, struct rb_root *root,
 				 *         and set p RB_BLACK)
 				 *
 				 *   (p)            (sl)
-				 *   &#x2F; \            &#x2F;  \
-				 *  N   sl   --&gt;   P    S
-				 *       \        &#x2F;      \
+				 *   / \            /  \
+				 *  N   sl   -->   P    S
+				 *       \        /      \
 				 *        S      N        Sr
 				 *         \
 				 *          Sr
-				 *&#x2F;
-				tmp1 &#x3D; tmp2-&gt;rb_right;
-				WRITE_ONCE(sibling-&gt;rb_left, tmp1);
-				WRITE_ONCE(tmp2-&gt;rb_right, sibling);
-				WRITE_ONCE(parent-&gt;rb_right, tmp2);
-				if (tmp1)
-					rb_set_parent_color(tmp1, sibling,
-							    RB_BLACK);
-				augment_rotate(sibling, tmp2);
-				tmp1 &#x3D; sibling;
-				sibling &#x3D; tmp2;
-			&#125;
-			&#x2F;*
+				 */</span>
+				tmp1 <span class="token operator">=</span> tmp2<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>sibling<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> tmp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>tmp2<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> sibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> tmp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp1<span class="token punctuation">)</span>
+					<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span>
+							    RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">augment_rotate</span><span class="token punctuation">(</span>sibling<span class="token punctuation">,</span> tmp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				tmp1 <span class="token operator">=</span> sibling<span class="token punctuation">;</span>
+				sibling <span class="token operator">=</span> tmp2<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token comment">/*
 			 * Case 4 - left rotate at parent + color flips
 			 * (p and sl could be either color here.
 			 *  After rotation, p becomes black, s acquires
-			 *  p&#39;s color, and sl keeps its color)
+			 *  p's color, and sl keeps its color)
 			 *
 			 *      (p)             (s)
-			 *      &#x2F; \             &#x2F; \
-			 *     N   S     --&gt;   P   Sr
-			 *        &#x2F; \         &#x2F; \
+			 *      / \             / \
+			 *     N   S     -->   P   Sr
+			 *        / \         / \
 			 *      (sl) sr      N  (sl)
-			 *&#x2F;
-			tmp2 &#x3D; sibling-&gt;rb_left;
-			WRITE_ONCE(parent-&gt;rb_right, tmp2);
-			WRITE_ONCE(sibling-&gt;rb_left, parent);
-			rb_set_parent_color(tmp1, sibling, RB_BLACK);
-			if (tmp2)
-				rb_set_parent(tmp2, parent);
-			__rb_rotate_set_parents(parent, sibling, root,
-						RB_BLACK);
-			augment_rotate(parent, sibling);
-			break;
-		&#125; else &#123;
-			sibling &#x3D; parent-&gt;rb_left;
-			if (rb_is_red(sibling)) &#123;
-				&#x2F;* Case 1 - right rotate at parent *&#x2F;
-				tmp1 &#x3D; sibling-&gt;rb_right;
-				WRITE_ONCE(parent-&gt;rb_left, tmp1);
-				WRITE_ONCE(sibling-&gt;rb_right, parent);
-				rb_set_parent_color(tmp1, parent, RB_BLACK);
-				__rb_rotate_set_parents(parent, sibling, root,
-							RB_RED);
-				augment_rotate(parent, sibling);
-				sibling &#x3D; tmp1;
-			&#125;
-			tmp1 &#x3D; sibling-&gt;rb_left;
-			if (!tmp1 || rb_is_black(tmp1)) &#123;
-				tmp2 &#x3D; sibling-&gt;rb_right;
-				if (!tmp2 || rb_is_black(tmp2)) &#123;
-					&#x2F;* Case 2 - sibling color flip *&#x2F;
-					rb_set_parent_color(sibling, parent,
-							    RB_RED);
-					if (rb_is_red(parent))
-						rb_set_black(parent);
-					else &#123;
-						node &#x3D; parent;
-						parent &#x3D; rb_parent(node);
-						if (parent)
-							continue;
-					&#125;
-					break;
-				&#125;
-				&#x2F;* Case 3 - left rotate at sibling *&#x2F;
-				tmp1 &#x3D; tmp2-&gt;rb_left;
-				WRITE_ONCE(sibling-&gt;rb_right, tmp1);
-				WRITE_ONCE(tmp2-&gt;rb_left, sibling);
-				WRITE_ONCE(parent-&gt;rb_left, tmp2);
-				if (tmp1)
-					rb_set_parent_color(tmp1, sibling,
-							    RB_BLACK);
-				augment_rotate(sibling, tmp2);
-				tmp1 &#x3D; sibling;
-				sibling &#x3D; tmp2;
-			&#125;
-			&#x2F;* Case 4 - right rotate at parent + color flips *&#x2F;
-			tmp2 &#x3D; sibling-&gt;rb_right;
-			WRITE_ONCE(parent-&gt;rb_left, tmp2);
-			WRITE_ONCE(sibling-&gt;rb_right, parent);
-			rb_set_parent_color(tmp1, sibling, RB_BLACK);
-			if (tmp2)
-				rb_set_parent(tmp2, parent);
-			__rb_rotate_set_parents(parent, sibling, root,
-						RB_BLACK);
-			augment_rotate(parent, sibling);
-			break;
-		&#125;
-	&#125;
-&#125;
+			 */</span>
+			tmp2 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> tmp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>sibling<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp2<span class="token punctuation">)</span>
+				<span class="token function">rb_set_parent</span><span class="token punctuation">(</span>tmp2<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span> root<span class="token punctuation">,</span>
+						RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">augment_rotate</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+			sibling <span class="token operator">=</span> parent<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">rb_is_red</span><span class="token punctuation">(</span>sibling<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token comment">/* Case 1 - right rotate at parent */</span>
+				tmp1 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> tmp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>sibling<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span> root<span class="token punctuation">,</span>
+							RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">augment_rotate</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				sibling <span class="token operator">=</span> tmp1<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+			tmp1 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>tmp1 <span class="token operator">||</span> <span class="token function">rb_is_black</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				tmp2 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>tmp2 <span class="token operator">||</span> <span class="token function">rb_is_black</span><span class="token punctuation">(</span>tmp2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+					<span class="token comment">/* Case 2 - sibling color flip */</span>
+					<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>sibling<span class="token punctuation">,</span> parent<span class="token punctuation">,</span>
+							    RB_RED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">rb_is_red</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">)</span>
+						<span class="token function">rb_set_black</span><span class="token punctuation">(</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+					<span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+						node <span class="token operator">=</span> parent<span class="token punctuation">;</span>
+						parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>parent<span class="token punctuation">)</span>
+							<span class="token keyword">continue</span><span class="token punctuation">;</span>
+					<span class="token punctuation">&#125;</span>
+					<span class="token keyword">break</span><span class="token punctuation">;</span>
+				<span class="token punctuation">&#125;</span>
+				<span class="token comment">/* Case 3 - left rotate at sibling */</span>
+				tmp1 <span class="token operator">=</span> tmp2<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>sibling<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> tmp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>tmp2<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> sibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> tmp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp1<span class="token punctuation">)</span>
+					<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span>
+							    RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token function">augment_rotate</span><span class="token punctuation">(</span>sibling<span class="token punctuation">,</span> tmp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				tmp1 <span class="token operator">=</span> sibling<span class="token punctuation">;</span>
+				sibling <span class="token operator">=</span> tmp2<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token comment">/* Case 4 - right rotate at parent + color flips */</span>
+			tmp2 <span class="token operator">=</span> sibling<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> tmp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">WRITE_ONCE</span><span class="token punctuation">(</span>sibling<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">rb_set_parent_color</span><span class="token punctuation">(</span>tmp1<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span> RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>tmp2<span class="token punctuation">)</span>
+				<span class="token function">rb_set_parent</span><span class="token punctuation">(</span>tmp2<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">__rb_rotate_set_parents</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">,</span> root<span class="token punctuation">,</span>
+						RB_BLACK<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">augment_rotate</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> sibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-&#x2F;* Non-inline version for rb_erase_augmented() use *&#x2F;
-void __rb_erase_color(struct rb_node *parent, struct rb_root *root,
-	void (*augment_rotate)(struct rb_node *old, struct rb_node *new))
-&#123;
-	____rb_erase_color(parent, root, augment_rotate);
-&#125;
-EXPORT_SYMBOL(__rb_erase_color);
+<span class="token comment">/* Non-inline version for rb_erase_augmented() use */</span>
+<span class="token keyword">void</span> <span class="token function">__rb_erase_color</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">,</span>
+	<span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>augment_rotate<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token function">____rb_erase_color</span><span class="token punctuation">(</span>parent<span class="token punctuation">,</span> root<span class="token punctuation">,</span> augment_rotate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>__rb_erase_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&#x2F;*
+<span class="token comment">/*
  * Non-augmented rbtree manipulation functions.
  *
  * We use dummy augmented callbacks here, and have the compiler optimize them
  * out of the rb_insert_color() and rb_erase() function definitions.
- *&#x2F;
+ */</span>
 
-static inline void dummy_propagate(struct rb_node *node, struct rb_node *stop) &#123;&#125;
-static inline void dummy_copy(struct rb_node *old, struct rb_node *new) &#123;&#125;
-static inline void dummy_rotate(struct rb_node *old, struct rb_node *new) &#123;&#125;
+<span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">dummy_propagate</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>stop<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">dummy_copy</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">dummy_rotate</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 
-static const struct rb_augment_callbacks dummy_callbacks &#x3D; &#123;
-	.propagate &#x3D; dummy_propagate,
-	.copy &#x3D; dummy_copy,
-	.rotate &#x3D; dummy_rotate
-&#125;;
+<span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_augment_callbacks</span> dummy_callbacks <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+	<span class="token punctuation">.</span>propagate <span class="token operator">=</span> dummy_propagate<span class="token punctuation">,</span>
+	<span class="token punctuation">.</span>copy <span class="token operator">=</span> dummy_copy<span class="token punctuation">,</span>
+	<span class="token punctuation">.</span>rotate <span class="token operator">=</span> dummy_rotate
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-void rb_insert_color(struct rb_node *node, struct rb_root *root)
-&#123;
-	__rb_insert(node, root, dummy_rotate);
-&#125;
-EXPORT_SYMBOL(rb_insert_color);
+<span class="token keyword">void</span> <span class="token function">rb_insert_color</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token function">__rb_insert</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> root<span class="token punctuation">,</span> dummy_rotate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_insert_color<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-void rb_erase(struct rb_node *node, struct rb_root *root)
-&#123;
-	struct rb_node *rebalance;
-	rebalance &#x3D; __rb_erase_augmented(node, root, &amp;dummy_callbacks);
-	if (rebalance)
-		____rb_erase_color(rebalance, root, dummy_rotate);
-&#125;
-EXPORT_SYMBOL(rb_erase);
+<span class="token keyword">void</span> <span class="token function">rb_erase</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>rebalance<span class="token punctuation">;</span>
+	rebalance <span class="token operator">=</span> <span class="token function">__rb_erase_augmented</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> root<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dummy_callbacks<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>rebalance<span class="token punctuation">)</span>
+		<span class="token function">____rb_erase_color</span><span class="token punctuation">(</span>rebalance<span class="token punctuation">,</span> root<span class="token punctuation">,</span> dummy_rotate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_erase<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&#x2F;*
+<span class="token comment">/*
  * Augmented rbtree manipulation functions.
  *
  * This instantiates the same __always_inline functions as in the non-augmented
  * case, but this time with user-defined callbacks.
- *&#x2F;
+ */</span>
 
-void __rb_insert_augmented(struct rb_node *node, struct rb_root *root,
-	void (*augment_rotate)(struct rb_node *old, struct rb_node *new))
-&#123;
-	__rb_insert(node, root, augment_rotate);
-&#125;
-EXPORT_SYMBOL(__rb_insert_augmented);
+<span class="token keyword">void</span> <span class="token function">__rb_insert_augmented</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">,</span>
+	<span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>augment_rotate<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token function">__rb_insert</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> root<span class="token punctuation">,</span> augment_rotate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>__rb_insert_augmented<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&#x2F;*
+<span class="token comment">/*
  * This function returns the first node (in sort order) of the tree.
- *&#x2F;
-struct rb_node *rb_first(const struct rb_root *root)
-&#123;
-	struct rb_node	*n;
+ */</span>
+<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_first</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span>	<span class="token operator">*</span>n<span class="token punctuation">;</span>
 
-	n &#x3D; root-&gt;rb_node;
-	if (!n)
-		return NULL;
-	while (n-&gt;rb_left)
-		n &#x3D; n-&gt;rb_left;
-	return n;
-&#125;
-EXPORT_SYMBOL(rb_first);
+	n <span class="token operator">=</span> root<span class="token operator">-></span>rb_node<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>n<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">-></span>rb_left<span class="token punctuation">)</span>
+		n <span class="token operator">=</span> n<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> n<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_first<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-struct rb_node *rb_last(const struct rb_root *root)
-&#123;
-	struct rb_node	*n;
+<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_last</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span>	<span class="token operator">*</span>n<span class="token punctuation">;</span>
 
-	n &#x3D; root-&gt;rb_node;
-	if (!n)
-		return NULL;
-	while (n-&gt;rb_right)
-		n &#x3D; n-&gt;rb_right;
-	return n;
-&#125;
-EXPORT_SYMBOL(rb_last);
+	n <span class="token operator">=</span> root<span class="token operator">-></span>rb_node<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>n<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">-></span>rb_right<span class="token punctuation">)</span>
+		n <span class="token operator">=</span> n<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> n<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_last<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-struct rb_node *rb_next(const struct rb_node *node)
-&#123;
-	struct rb_node *parent;
+<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_next</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent<span class="token punctuation">;</span>
 
-	if (RB_EMPTY_NODE(node))
-		return NULL;
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">RB_EMPTY_NODE</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 
-	&#x2F;*
+	<span class="token comment">/*
 	 * If we have a right-hand child, go down and then left as far
 	 * as we can.
-	 *&#x2F;
-	if (node-&gt;rb_right) &#123;
-		node &#x3D; node-&gt;rb_right;
-		while (node-&gt;rb_left)
-			node &#x3D; node-&gt;rb_left;
-		return (struct rb_node *)node;
-	&#125;
+	 */</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-></span>rb_right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		node <span class="token operator">=</span> node<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>node<span class="token operator">-></span>rb_left<span class="token punctuation">)</span>
+			node <span class="token operator">=</span> node<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token punctuation">)</span>node<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
 
-	&#x2F;*
+	<span class="token comment">/*
 	 * No right-hand children. Everything down and left is smaller than us,
-	 * so any &#39;next&#39; node must be in the general direction of our parent.
+	 * so any 'next' node must be in the general direction of our parent.
 	 * Go up the tree; any time the ancestor is a right-hand child of its
-	 * parent, keep going up. First time it&#39;s a left-hand child of its
-	 * parent, said parent is our &#39;next&#39; node.
-	 *&#x2F;
-	while ((parent &#x3D; rb_parent(node)) &amp;&amp; node &#x3D;&#x3D; parent-&gt;rb_right)
-		node &#x3D; parent;
+	 * parent, keep going up. First time it's a left-hand child of its
+	 * parent, said parent is our 'next' node.
+	 */</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> node <span class="token operator">==</span> parent<span class="token operator">-></span>rb_right<span class="token punctuation">)</span>
+		node <span class="token operator">=</span> parent<span class="token punctuation">;</span>
 
-	return parent;
-&#125;
-EXPORT_SYMBOL(rb_next);
+	<span class="token keyword">return</span> parent<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_next<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-struct rb_node *rb_prev(const struct rb_node *node)
-&#123;
-	struct rb_node *parent;
+<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_prev</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent<span class="token punctuation">;</span>
 
-	if (RB_EMPTY_NODE(node))
-		return NULL;
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">RB_EMPTY_NODE</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 
-	&#x2F;*
+	<span class="token comment">/*
 	 * If we have a left-hand child, go down and then right as far
 	 * as we can.
-	 *&#x2F;
-	if (node-&gt;rb_left) &#123;
-		node &#x3D; node-&gt;rb_left;
-		while (node-&gt;rb_right)
-			node &#x3D; node-&gt;rb_right;
-		return (struct rb_node *)node;
-	&#125;
+	 */</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-></span>rb_left<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		node <span class="token operator">=</span> node<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>node<span class="token operator">-></span>rb_right<span class="token punctuation">)</span>
+			node <span class="token operator">=</span> node<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token punctuation">)</span>node<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
 
-	&#x2F;*
+	<span class="token comment">/*
 	 * No left-hand children. Go up till we find an ancestor which
 	 * is a right-hand child of its parent.
-	 *&#x2F;
-	while ((parent &#x3D; rb_parent(node)) &amp;&amp; node &#x3D;&#x3D; parent-&gt;rb_left)
-		node &#x3D; parent;
+	 */</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> node <span class="token operator">==</span> parent<span class="token operator">-></span>rb_left<span class="token punctuation">)</span>
+		node <span class="token operator">=</span> parent<span class="token punctuation">;</span>
 
-	return parent;
-&#125;
-EXPORT_SYMBOL(rb_prev);
+	<span class="token keyword">return</span> parent<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_prev<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-void rb_replace_node(struct rb_node *victim, struct rb_node *new,
-		     struct rb_root *root)
-&#123;
-	struct rb_node *parent &#x3D; rb_parent(victim);
+<span class="token keyword">void</span> <span class="token function">rb_replace_node</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>victim<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">,</span>
+		     <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>victim<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	&#x2F;* Copy the pointers&#x2F;colour from the victim to the replacement *&#x2F;
-	*new &#x3D; *victim;
+	<span class="token comment">/* Copy the pointers/colour from the victim to the replacement */</span>
+	<span class="token operator">*</span><span class="token keyword">new</span> <span class="token operator">=</span> <span class="token operator">*</span>victim<span class="token punctuation">;</span>
 
-	&#x2F;* Set the surrounding nodes to point to the replacement *&#x2F;
-	if (victim-&gt;rb_left)
-		rb_set_parent(victim-&gt;rb_left, new);
-	if (victim-&gt;rb_right)
-		rb_set_parent(victim-&gt;rb_right, new);
-	__rb_change_child(victim, new, parent, root);
-&#125;
-EXPORT_SYMBOL(rb_replace_node);
+	<span class="token comment">/* Set the surrounding nodes to point to the replacement */</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_left<span class="token punctuation">)</span>
+		<span class="token function">rb_set_parent</span><span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_right<span class="token punctuation">)</span>
+		<span class="token function">rb_set_parent</span><span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">__rb_change_child</span><span class="token punctuation">(</span>victim<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">,</span> parent<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_replace_node<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-void rb_replace_node_rcu(struct rb_node *victim, struct rb_node *new,
-			 struct rb_root *root)
-&#123;
-	struct rb_node *parent &#x3D; rb_parent(victim);
+<span class="token keyword">void</span> <span class="token function">rb_replace_node_rcu</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>victim<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token keyword">new</span><span class="token punctuation">,</span>
+			 <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>victim<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	&#x2F;* Copy the pointers&#x2F;colour from the victim to the replacement *&#x2F;
-	*new &#x3D; *victim;
+	<span class="token comment">/* Copy the pointers/colour from the victim to the replacement */</span>
+	<span class="token operator">*</span><span class="token keyword">new</span> <span class="token operator">=</span> <span class="token operator">*</span>victim<span class="token punctuation">;</span>
 
-	&#x2F;* Set the surrounding nodes to point to the replacement *&#x2F;
-	if (victim-&gt;rb_left)
-		rb_set_parent(victim-&gt;rb_left, new);
-	if (victim-&gt;rb_right)
-		rb_set_parent(victim-&gt;rb_right, new);
+	<span class="token comment">/* Set the surrounding nodes to point to the replacement */</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_left<span class="token punctuation">)</span>
+		<span class="token function">rb_set_parent</span><span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_left<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_right<span class="token punctuation">)</span>
+		<span class="token function">rb_set_parent</span><span class="token punctuation">(</span>victim<span class="token operator">-></span>rb_right<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	&#x2F;* Set the parent&#39;s pointer to the new node last after an RCU barrier
+	<span class="token comment">/* Set the parent's pointer to the new node last after an RCU barrier
 	 * so that the pointers onwards are seen to be set correctly when doing
 	 * an RCU walk over the tree.
-	 *&#x2F;
-	__rb_change_child_rcu(victim, new, parent, root);
-&#125;
-EXPORT_SYMBOL(rb_replace_node_rcu);
+	 */</span>
+	<span class="token function">__rb_change_child_rcu</span><span class="token punctuation">(</span>victim<span class="token punctuation">,</span> <span class="token keyword">new</span><span class="token punctuation">,</span> parent<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_replace_node_rcu<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-static struct rb_node *rb_left_deepest_node(const struct rb_node *node)
-&#123;
-	for (;;) &#123;
-		if (node-&gt;rb_left)
-			node &#x3D; node-&gt;rb_left;
-		else if (node-&gt;rb_right)
-			node &#x3D; node-&gt;rb_right;
-		else
-			return (struct rb_node *)node;
-	&#125;
-&#125;
+<span class="token keyword">static</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_left_deepest_node</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-></span>rb_left<span class="token punctuation">)</span>
+			node <span class="token operator">=</span> node<span class="token operator">-></span>rb_left<span class="token punctuation">;</span>
+		<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-></span>rb_right<span class="token punctuation">)</span>
+			node <span class="token operator">=</span> node<span class="token operator">-></span>rb_right<span class="token punctuation">;</span>
+		<span class="token keyword">else</span>
+			<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token punctuation">)</span>node<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-struct rb_node *rb_next_postorder(const struct rb_node *node)
-&#123;
-	const struct rb_node *parent;
-	if (!node)
-		return NULL;
-	parent &#x3D; rb_parent(node);
+<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_next_postorder</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>node<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span>parent<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	parent <span class="token operator">=</span> <span class="token function">rb_parent</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	&#x2F;* If we&#39;re sitting on node, we&#39;ve already seen our children *&#x2F;
-	if (parent &amp;&amp; node &#x3D;&#x3D; parent-&gt;rb_left &amp;&amp; parent-&gt;rb_right) &#123;
-		&#x2F;* If we are the parent&#39;s left node, go to the parent&#39;s right
-		 * node then all the way down to the left *&#x2F;
-		return rb_left_deepest_node(parent-&gt;rb_right);
-	&#125; else
-		&#x2F;* Otherwise we are the parent&#39;s right node, and the parent
-		 * should be next *&#x2F;
-		return (struct rb_node *)parent;
-&#125;
-EXPORT_SYMBOL(rb_next_postorder);
+	<span class="token comment">/* If we're sitting on node, we've already seen our children */</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>parent <span class="token operator">&amp;&amp;</span> node <span class="token operator">==</span> parent<span class="token operator">-></span>rb_left <span class="token operator">&amp;&amp;</span> parent<span class="token operator">-></span>rb_right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token comment">/* If we are the parent's left node, go to the parent's right
+		 * node then all the way down to the left */</span>
+		<span class="token keyword">return</span> <span class="token function">rb_left_deepest_node</span><span class="token punctuation">(</span>parent<span class="token operator">-></span>rb_right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span> <span class="token keyword">else</span>
+		<span class="token comment">/* Otherwise we are the parent's right node, and the parent
+		 * should be next */</span>
+		<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token punctuation">)</span>parent<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_next_postorder<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-struct rb_node *rb_first_postorder(const struct rb_root *root)
-&#123;
-	if (!root-&gt;rb_node)
-		return NULL;
+<span class="token keyword">struct</span> <span class="token class-name">rb_node</span> <span class="token operator">*</span><span class="token function">rb_first_postorder</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">struct</span> <span class="token class-name">rb_root</span> <span class="token operator">*</span>root<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>root<span class="token operator">-></span>rb_node<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 
-	return rb_left_deepest_node(root-&gt;rb_node);
-&#125;
-EXPORT_SYMBOL(rb_first_postorder);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token keyword">return</span> <span class="token function">rb_left_deepest_node</span><span class="token punctuation">(</span>root<span class="token operator">-></span>rb_node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">EXPORT_SYMBOL</span><span class="token punctuation">(</span>rb_first_postorder<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1531,7 +1532,7 @@ EXPORT_SYMBOL(rb_first_postorder);<span aria-hidden="true" class="line-numbers-r
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">7.1k</span>
+                        class="white-color">5.8k</span>
             
             
             
