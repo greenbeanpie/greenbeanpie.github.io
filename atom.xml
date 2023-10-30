@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://greenbeanpie.github.io/"/>
+  <updated>2023-10-30T11:53:52.787Z</updated>
+  <id>https://greenbeanpie.github.io/</id>
+  
+  <author>
+    <name>Mozhi Hong</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>红黑树模板 (Red-Black Tree)</title>
+    <link href="https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/"/>
+    <id>https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/</id>
+    <published>2023-10-30T11:48:44.000Z</published>
+    <updated>2023-10-30T11:53:52.787Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;理论上来说根据 GPL v2 可以自由分发，所以在这里贴上作者应该就不是什么大问题了（确信）&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
+    
+    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="平衡树" scheme="https://greenbeanpie.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cambridge dictionary 单词查询程序</title>
+    <link href="https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/"/>
+    <id>https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/</id>
+    <published>2023-10-29T08:09:31.000Z</published>
+    <updated>2023-10-29T12:25:18.458Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;程序会自动从 &lt;code&gt;word.in&lt;/code&gt; 中获取信息并输出结果，输入格式如下：&lt;/p&gt;
+&lt;p&gt;第一行 $ n $ 为书本数量，以下有 $ n $ 组数据，每组的第一行为书本名称，第二行为页数 $ m $ ，下有 $ m $ 组数据，每组的第 $ 1~3 $</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Python" scheme="https://greenbeanpie.github.io/tags/Python/"/>
+    
+    <category term="爬虫" scheme="https://greenbeanpie.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++ Templates</title>
+    <link href="https://greenbeanpie.github.io/2023/10/27/cpp-templates/"/>
+    <id>https://greenbeanpie.github.io/2023/10/27/cpp-templates/</id>
+    <published>2023-10-27T10:58:35.000Z</published>
+    <updated>2023-10-30T07:53:00.971Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;FastIO-from-Matrix-mlt&quot;&gt;&lt;a href=&quot;#FastIO-from-Matrix-mlt&quot; class=&quot;headerlink&quot; title=&quot;FastIO from Matrix_mlt&quot;&gt;&lt;/a&gt;FastIO from</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
+    
+    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://greenbeanpie.github.io/2023/10/27/hello-world/"/>
+    <id>https://greenbeanpie.github.io/2023/10/27/hello-world/</id>
+    <published>2023-10-27T08:38:04.173Z</published>
+    <updated>2023-10-27T08:38:04.173Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
