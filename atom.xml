@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2023-11-01T03:41:52.593Z</updated>
+  <updated>2023-11-01T03:45:48.957Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>exGCD（扩展欧拉定理）模板</title>
+    <title>扩展欧拉定理(exGCD)模板</title>
     <link href="https://greenbeanpie.github.io/2023/11/01/exgcd/"/>
     <id>https://greenbeanpie.github.io/2023/11/01/exgcd/</id>
     <published>2023-11-01T03:39:57.000Z</published>
-    <updated>2023-11-01T03:41:52.593Z</updated>
+    <updated>2023-11-01T03:45:48.957Z</updated>
     
     
       
@@ -47,11 +47,11 @@
   </entry>
   
   <entry>
-    <title>exCRT（扩展中国剩余定理）模板</title>
+    <title>扩展中国剩余定理(exCRT)模板</title>
     <link href="https://greenbeanpie.github.io/2023/10/31/excrt/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/excrt/</id>
     <published>2023-10-31T06:27:28.000Z</published>
-    <updated>2023-11-01T03:41:48.875Z</updated>
+    <updated>2023-11-01T03:46:42.984Z</updated>
     
     
       
@@ -102,11 +102,11 @@
   </entry>
   
   <entry>
-    <title>红黑树模板 (Red-Black Tree)</title>
-    <link href="https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/"/>
-    <id>https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/</id>
+    <title>平衡树 (Balancing Tree) 模板</title>
+    <link href="https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/"/>
+    <id>https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/</id>
     <published>2023-10-30T11:48:44.000Z</published>
-    <updated>2023-11-01T03:42:01.932Z</updated>
+    <updated>2023-11-01T03:45:29.677Z</updated>
     
     
       
