@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2023-11-01T03:41:16.750Z</updated>
+  <updated>2023-11-01T03:41:52.593Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://greenbeanpie.github.io/2023/11/01/exgcd/"/>
     <id>https://greenbeanpie.github.io/2023/11/01/exgcd/</id>
     <published>2023-11-01T03:39:57.000Z</published>
-    <updated>2023-11-01T03:41:16.750Z</updated>
+    <updated>2023-11-01T03:41:52.593Z</updated>
     
     
       
@@ -35,6 +35,14 @@
     
     
     
+    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
+    
+    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="数论" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   
@@ -43,7 +51,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/31/excrt/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/excrt/</id>
     <published>2023-10-31T06:27:28.000Z</published>
-    <updated>2023-10-31T06:28:18.696Z</updated>
+    <updated>2023-11-01T03:41:48.875Z</updated>
     
     
       
@@ -57,6 +65,14 @@
     
     
     
+    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
+    
+    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="数论" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   
@@ -90,7 +106,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/"/>
     <id>https://greenbeanpie.github.io/2023/10/30/red-black-tree-template/</id>
     <published>2023-10-30T11:48:44.000Z</published>
-    <updated>2023-10-30T13:24:42.509Z</updated>
+    <updated>2023-11-01T03:42:01.932Z</updated>
     
     
       
@@ -111,7 +127,7 @@
     
     <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
     
-    <category term="平衡树" scheme="https://greenbeanpie.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
+    <category term="数据结构" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
