@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2023-11-01T03:45:48.957Z</updated>
+  <updated>2023-11-07T09:10:50.656Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>学校激情演讲：浅谈学校竞赛规章制度</title>
+    <link href="https://greenbeanpie.github.io/2023/11/01/school-speaking/"/>
+    <id>https://greenbeanpie.github.io/2023/11/01/school-speaking/</id>
+    <published>2023-11-01T03:39:57.000Z</published>
+    <updated>2023-11-07T09:10:50.656Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;2023-11-07-学校激情演讲：浅谈学校竞赛制度&quot;&gt;&lt;a href=&quot;#2023-11-07-学校激情演讲：浅谈学校竞赛制度&quot; class=&quot;headerlink&quot; title=&quot;2023/11/07</summary>
+        
+      
+    
+    
+    
+    <category term="演讲" scheme="https://greenbeanpie.github.io/categories/%E6%BC%94%E8%AE%B2/"/>
+    
+    
+    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>扩展欧拉定理(exGCD)模板</title>
     <link href="https://greenbeanpie.github.io/2023/11/01/exgcd/"/>
     <id>https://greenbeanpie.github.io/2023/11/01/exgcd/</id>
     <published>2023-11-01T03:39:57.000Z</published>
-    <updated>2023-11-01T03:45:48.957Z</updated>
+    <updated>2023-11-07T10:47:00.355Z</updated>
     
     
       
@@ -29,7 +54,7 @@
         
         
     <summary type="html">&lt;p&gt;解释：咕咕咕。&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-cpp&quot; data-language=&quot;cpp&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;</summary>
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
         
       
     
@@ -51,7 +76,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/31/excrt/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/excrt/</id>
     <published>2023-10-31T06:27:28.000Z</published>
-    <updated>2023-11-01T03:46:42.984Z</updated>
+    <updated>2023-11-07T10:47:00.353Z</updated>
     
     
       
@@ -59,7 +84,7 @@
         
         
     <summary type="html">&lt;p&gt;解释等到赛前复习模板的时候再写。&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-cpp&quot; data-language=&quot;cpp&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token</summary>
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
         
       
     
@@ -81,7 +106,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/31/diary/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/diary/</id>
     <published>2023-10-31T04:46:05.000Z</published>
-    <updated>2023-11-03T02:13:14.080Z</updated>
+    <updated>2023-11-07T10:47:00.354Z</updated>
     
     
       
@@ -106,7 +131,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/"/>
     <id>https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/</id>
     <published>2023-10-30T11:48:44.000Z</published>
-    <updated>2023-11-01T04:50:54.795Z</updated>
+    <updated>2023-11-07T10:47:00.351Z</updated>
     
     
       
@@ -135,7 +160,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/"/>
     <id>https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/</id>
     <published>2023-10-29T08:09:31.000Z</published>
-    <updated>2023-10-30T13:24:37.706Z</updated>
+    <updated>2023-11-07T10:47:00.353Z</updated>
     
     
       
@@ -163,7 +188,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/27/cpp-templates/"/>
     <id>https://greenbeanpie.github.io/2023/10/27/cpp-templates/</id>
     <published>2023-10-27T10:58:35.000Z</published>
-    <updated>2023-10-30T13:23:58.334Z</updated>
+    <updated>2023-11-07T10:47:00.354Z</updated>
     
     
       
@@ -187,10 +212,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://greenbeanpie.github.io/2023/10/27/hello-world/"/>
-    <id>https://greenbeanpie.github.io/2023/10/27/hello-world/</id>
-    <published>2023-10-27T08:38:04.173Z</published>
-    <updated>2023-10-27T08:38:04.173Z</updated>
+    <link href="https://greenbeanpie.github.io/1970/01/01/hello-world/"/>
+    <id>https://greenbeanpie.github.io/1970/01/01/hello-world/</id>
+    <published>1970-01-01T00:00:00.000Z</published>
+    <updated>2023-11-07T10:47:00.355Z</updated>
     
     
       

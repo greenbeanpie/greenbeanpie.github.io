@@ -6,14 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="扩展欧拉定理(exGCD)模板, Hexo">
     <meta name="description" content="解释：咕咕咕。
-int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
-{ // ax+by=gcd(a,b)
-	if (!b)
-	{
-		x = 1, y = 0;
-		return a;
-	}
-	">
+1234567891011int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y){ // ax+by=gcd(a,b)	if (!b)	{		x = 1, y = 0;		return">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -69,7 +62,7 @@ int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
 </head>
@@ -423,7 +416,7 @@ int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2023-11-01
+                    2023-11-07
                 </div>
                 
 
@@ -461,17 +454,7 @@ int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>解释：咕咕咕。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">exgcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span>
-<span class="token punctuation">{</span> <span class="token comment">// ax+by=gcd(a,b)</span>
-	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>b<span class="token punctuation">)</span>
-	<span class="token punctuation">{</span>
-		x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-		<span class="token keyword">return</span> a<span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-	<span class="token keyword">auto</span> ans <span class="token operator">=</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	y <span class="token operator">-=</span> a <span class="token operator">/</span> b <span class="token operator">*</span> x<span class="token punctuation">;</span>
-	<span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exgcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> &amp;x, <span class="type">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>{ <span class="comment">// ax+by=gcd(a,b)</span></span><br><span class="line">	<span class="keyword">if</span> (!b)</span><br><span class="line">	{</span><br><span class="line">		x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">auto</span> ans = <span class="built_in">exgcd</span>(b, a % b, y, x);</span><br><span class="line">	y -= a / b * x;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -651,18 +634,17 @@ int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2023/11/01/exgcd/">
+                <a href="/2023/11/01/school-speaking/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="扩展欧拉定理(exGCD)模板">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="学校激情演讲：浅谈学校竞赛规章制度">
                         
-                        <span class="card-title">扩展欧拉定理(exGCD)模板</span>
+                        <span class="card-title">学校激情演讲：浅谈学校竞赛规章制度</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -672,35 +654,26 @@ int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B/" class="post-category">
-                                    编程
+                            <a href="/categories/%E6%BC%94%E8%AE%B2/" class="post-category">
+                                    演讲
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A8%A1%E6%9D%BF/">
-                        <span class="chip bg-color">模板</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E8%AE%BA/">
-                        <span class="chip bg-color">数论</span>
+                    <a href="/tags/OI/">
+                        <span class="chip bg-color">OI</span>
                     </a>
                     
                 </div>
@@ -951,7 +924,7 @@ int exgcd(int a, int b, int &amp;amp;x, int &amp;amp;y)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">7k</span>
+                        class="white-color">7.9k</span>
             
             
             
