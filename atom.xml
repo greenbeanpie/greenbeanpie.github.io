@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2023-11-07T11:00:58.970Z</updated>
+  <updated>2023-12-06T09:15:54.770Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -17,18 +17,76 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>OI 大事件记录 (大事祭)</title>
+    <link href="https://greenbeanpie.github.io/2023/12/06/oi-big-events/"/>
+    <id>https://greenbeanpie.github.io/2023/12/06/oi-big-events/</id>
+    <published>2023-12-06T09:13:39.000Z</published>
+    <updated>2023-12-06T09:15:54.770Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;提示：本文章可能含有部分中二、发电内容，请谨慎浏览。&lt;/p&gt;
+&lt;p&gt;咕咕咕。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="日记" scheme="https://greenbeanpie.github.io/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+    <category term="日记" scheme="https://greenbeanpie.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++ 命令使用时间</title>
+    <link href="https://greenbeanpie.github.io/2023/11/15/command-time/"/>
+    <id>https://greenbeanpie.github.io/2023/11/15/command-time/</id>
+    <published>2023-11-15T04:51:09.000Z</published>
+    <updated>2023-12-06T09:14:13.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;你在找什么？&lt;/p&gt;
+&lt;p&gt;咕咕咕。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
+    
+    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>学校激情演讲：浅谈学校竞赛规章制度</title>
     <link href="https://greenbeanpie.github.io/2023/11/07/school-speaking/"/>
     <id>https://greenbeanpie.github.io/2023/11/07/school-speaking/</id>
     <published>2023-11-07T11:00:27.000Z</published>
-    <updated>2023-11-07T11:00:58.970Z</updated>
+    <updated>2023-11-07T11:06:51.387Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;2023-11-07-学校激情演讲：浅谈学校竞赛制度&quot;&gt;&lt;a href=&quot;#2023-11-07-学校激情演讲：浅谈学校竞赛制度&quot; class=&quot;headerlink&quot; title=&quot;2023/11/07</summary>
+    <summary type="html">&lt;h2 id=&quot;2023-11-07-学校激情演讲：浅谈学校竞赛制度-提纲&quot;&gt;&lt;a href=&quot;#2023-11-07-学校激情演讲：浅谈学校竞赛制度-提纲&quot; class=&quot;headerlink&quot; title=&quot;2023/11/07</summary>
         
       
     
@@ -46,7 +104,7 @@
     <link href="https://greenbeanpie.github.io/2023/11/01/exgcd/"/>
     <id>https://greenbeanpie.github.io/2023/11/01/exgcd/</id>
     <published>2023-11-01T03:39:57.000Z</published>
-    <updated>2023-11-07T10:47:00.355Z</updated>
+    <updated>2023-11-15T04:51:46.960Z</updated>
     
     
       
@@ -67,6 +125,8 @@
     
     <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
     
+    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
+    
     <category term="数论" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
@@ -76,7 +136,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/31/excrt/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/excrt/</id>
     <published>2023-10-31T06:27:28.000Z</published>
-    <updated>2023-11-07T10:47:00.353Z</updated>
+    <updated>2023-11-15T04:52:01.672Z</updated>
     
     
       
@@ -97,6 +157,8 @@
     
     <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
     
+    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
+    
     <category term="数论" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
@@ -106,7 +168,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/31/diary/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/diary/</id>
     <published>2023-10-31T04:46:05.000Z</published>
-    <updated>2023-11-07T10:47:00.354Z</updated>
+    <updated>2023-11-07T12:07:05.075Z</updated>
     
     
       
@@ -131,7 +193,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/"/>
     <id>https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/</id>
     <published>2023-10-30T11:48:44.000Z</published>
-    <updated>2023-11-07T10:47:00.351Z</updated>
+    <updated>2023-11-15T04:52:09.480Z</updated>
     
     
       
@@ -152,6 +214,8 @@
     <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
     
     <category term="数据结构" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
     
   </entry>
   
