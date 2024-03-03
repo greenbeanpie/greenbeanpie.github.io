@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2023-12-13T07:00:01.424Z</updated>
+  <updated>2024-03-03T09:12:16.323Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://greenbeanpie.github.io/2023/12/06/oi-big-events/"/>
     <id>https://greenbeanpie.github.io/2023/12/06/oi-big-events/</id>
     <published>2023-12-06T09:13:39.000Z</published>
-    <updated>2023-12-13T07:00:01.424Z</updated>
+    <updated>2024-03-03T09:12:16.323Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;OI-大事件记录-大事祭&quot;&gt;&lt;a href=&quot;#OI-大事件记录-大事祭&quot; class=&quot;headerlink&quot; title=&quot;OI 大事件记录 (大事祭)&quot;&gt;&lt;/a&gt;OI 大事件记录</summary>
+    <summary type="html">&lt;h1 id=&quot;OI-大事件记录-大事祭&quot;&gt;&lt;a href=&quot;#OI-大事件记录-大事祭&quot; class=&quot;headerlink&quot; title=&quot;OI 大事件记录 (大事祭)&quot;&gt;&lt;/a&gt;OI 大事件记录 (大事祭)&lt;/h1&gt;&lt;h2 id=&quot;2021&quot;&gt;&lt;a</summary>
         
       
     
@@ -73,100 +73,11 @@
   </entry>
   
   <entry>
-    <title>学校激情演讲：浅谈学校竞赛规章制度</title>
-    <link href="https://greenbeanpie.github.io/2023/11/07/school-speaking/"/>
-    <id>https://greenbeanpie.github.io/2023/11/07/school-speaking/</id>
-    <published>2023-11-07T11:00:27.000Z</published>
-    <updated>2023-11-07T11:06:51.387Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;2023-11-07-学校激情演讲：浅谈学校竞赛制度-提纲&quot;&gt;&lt;a href=&quot;#2023-11-07-学校激情演讲：浅谈学校竞赛制度-提纲&quot; class=&quot;headerlink&quot; title=&quot;2023/11/07</summary>
-        
-      
-    
-    
-    
-    <category term="演讲" scheme="https://greenbeanpie.github.io/categories/%E6%BC%94%E8%AE%B2/"/>
-    
-    
-    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>扩展欧拉定理(exGCD)模板</title>
-    <link href="https://greenbeanpie.github.io/2023/11/01/exgcd/"/>
-    <id>https://greenbeanpie.github.io/2023/11/01/exgcd/</id>
-    <published>2023-11-01T03:39:57.000Z</published>
-    <updated>2023-11-15T04:51:46.960Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;解释：咕咕咕。&lt;/p&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
-    
-    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
-    
-    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
-    
-    <category term="数论" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>扩展中国剩余定理(exCRT)模板</title>
-    <link href="https://greenbeanpie.github.io/2023/10/31/excrt/"/>
-    <id>https://greenbeanpie.github.io/2023/10/31/excrt/</id>
-    <published>2023-10-31T06:27:28.000Z</published>
-    <updated>2023-11-15T04:52:01.672Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;解释等到赛前复习模板的时候再写。&lt;/p&gt;
-&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
-    
-    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
-    
-    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
-    
-    <category term="数论" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Diary</title>
     <link href="https://greenbeanpie.github.io/2023/10/31/diary/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/diary/</id>
     <published>2023-10-31T04:46:05.000Z</published>
-    <updated>2023-11-07T12:07:05.075Z</updated>
+    <updated>2024-03-03T09:13:26.373Z</updated>
     
     
       
@@ -183,37 +94,6 @@
     
     
     <category term="日记" scheme="https://greenbeanpie.github.io/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>平衡树 (Balancing Tree) 模板</title>
-    <link href="https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/"/>
-    <id>https://greenbeanpie.github.io/2023/10/30/balancing-tree-template/</id>
-    <published>2023-10-30T11:48:44.000Z</published>
-    <updated>2023-11-15T04:52:09.480Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;无旋Treap-FHQ-Treap&quot;&gt;&lt;a href=&quot;#无旋Treap-FHQ-Treap&quot; class=&quot;headerlink&quot; title=&quot;无旋Treap(FHQ Treap)&quot;&gt;&lt;/a&gt;无旋Treap(FHQ</summary>
-        
-      
-    
-    
-    
-    <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
-    
-    
-    <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
-    
-    <category term="模板" scheme="https://greenbeanpie.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
-    
-    <category term="数据结构" scheme="https://greenbeanpie.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
     
   </entry>
   
