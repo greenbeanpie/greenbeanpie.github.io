@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2024-03-16T09:09:25.797Z</updated>
+  <updated>2024-03-30T09:07:01.999Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -17,11 +17,24 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Clash-tutorial</title>
+    <title>WZ-自动点餐小程序</title>
+    <link href="https://greenbeanpie.github.io/2024/03/18/auto-order-program/"/>
+    <id>https://greenbeanpie.github.io/2024/03/18/auto-order-program/</id>
+    <published>2024-03-18T06:41:21.000Z</published>
+    <updated>2024-03-30T09:07:01.999Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>翻墙教程</title>
     <link href="https://greenbeanpie.github.io/2024/03/16/clash-tutorial/"/>
     <id>https://greenbeanpie.github.io/2024/03/16/clash-tutorial/</id>
     <published>2024-03-16T09:00:09.000Z</published>
-    <updated>2024-03-16T09:09:25.797Z</updated>
+    <updated>2024-03-30T09:06:55.447Z</updated>
     
     
       
