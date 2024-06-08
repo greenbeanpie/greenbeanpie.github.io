@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2024-06-08T12:41:35.391Z</updated>
+  <updated>2024-06-08T13:29:04.421Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -17,15 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>IDE-recommendation</title>
+    <title>关于一些IDE的推荐</title>
     <link href="https://greenbeanpie.github.io/2024/06/08/ide-recommendation/"/>
     <id>https://greenbeanpie.github.io/2024/06/08/ide-recommendation/</id>
     <published>2024-06-08T12:41:35.000Z</published>
-    <updated>2024-06-08T12:41:35.391Z</updated>
+    <updated>2024-06-08T13:29:04.421Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;为了给我们学校的信息技术老师建议使用一些其他的 IDE 而不要再用</summary>
+        
+      
     
     
     
     
+    <category term="信息技术" scheme="https://greenbeanpie.github.io/tags/%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="IDE(编辑器)" scheme="https://greenbeanpie.github.io/tags/IDE-%E7%BC%96%E8%BE%91%E5%99%A8/"/>
     
   </entry>
   
@@ -34,11 +46,23 @@
     <link href="https://greenbeanpie.github.io/2024/03/18/auto-order-program/"/>
     <id>https://greenbeanpie.github.io/2024/03/18/auto-order-program/</id>
     <published>2024-03-18T06:41:21.000Z</published>
-    <updated>2024-03-30T09:07:01.999Z</updated>
+    <updated>2024-06-08T12:44:03.405Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;你说得对，但是作者因为不知道 HTTP GET</summary>
+        
+      
     
     
     
     
+    <category term="Python" scheme="https://greenbeanpie.github.io/tags/Python/"/>
+    
+    <category term="信息技术" scheme="https://greenbeanpie.github.io/tags/%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
@@ -47,7 +71,7 @@
     <link href="https://greenbeanpie.github.io/2024/03/16/clash-tutorial/"/>
     <id>https://greenbeanpie.github.io/2024/03/16/clash-tutorial/</id>
     <published>2024-03-16T09:00:09.000Z</published>
-    <updated>2024-03-30T09:06:55.447Z</updated>
+    <updated>2024-06-08T12:44:40.668Z</updated>
     
     
       
@@ -61,6 +85,10 @@
     
     
     
+    <category term="信息技术" scheme="https://greenbeanpie.github.io/tags/%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="魔法/科学上网/翻墙" scheme="https://greenbeanpie.github.io/tags/%E9%AD%94%E6%B3%95-%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E7%BF%BB%E5%A2%99/"/>
+    
   </entry>
   
   <entry>
@@ -68,20 +96,15 @@
     <link href="https://greenbeanpie.github.io/2024/03/03/game-experience-gal-1/"/>
     <id>https://greenbeanpie.github.io/2024/03/03/game-experience-gal-1/</id>
     <published>2024-03-03T09:14:23.000Z</published>
-    <updated>2024-03-16T09:09:59.810Z</updated>
+    <updated>2024-06-08T12:42:24.216Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;比肩神明的唯一方式，是变得如同神明一般残酷。（戏剧《卡利古拉》）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;你在希望着什么？&lt;/p&gt;
-&lt;p&gt;预计更新时间：2024/03/17，如果这个星期是小周的话。&lt;/p&gt;
-&lt;p&gt;咕咕咕。&lt;/p&gt;
-&lt;p&gt;再次更新</summary>
+    <summary type="html">&lt;p&gt;你说得对，但是作者已经鸽了三个月了。&lt;/p&gt;
+</summary>
         
       
     
@@ -95,7 +118,7 @@
     <link href="https://greenbeanpie.github.io/2023/12/06/oi-big-events/"/>
     <id>https://greenbeanpie.github.io/2023/12/06/oi-big-events/</id>
     <published>2023-12-06T09:13:39.000Z</published>
-    <updated>2024-03-11T08:57:22.421Z</updated>
+    <updated>2024-06-08T12:47:06.981Z</updated>
     
     
       
@@ -118,11 +141,11 @@
   </entry>
   
   <entry>
-    <title>C++ 命令使用时间</title>
+    <title>编程语言中各命令使用时间</title>
     <link href="https://greenbeanpie.github.io/2023/11/15/command-time/"/>
     <id>https://greenbeanpie.github.io/2023/11/15/command-time/</id>
     <published>2023-11-15T04:51:09.000Z</published>
-    <updated>2023-12-06T09:16:06.659Z</updated>
+    <updated>2024-06-08T12:45:21.038Z</updated>
     
     
       
@@ -142,7 +165,11 @@
     
     <category term="C++" scheme="https://greenbeanpie.github.io/tags/C/"/>
     
+    <category term="Python" scheme="https://greenbeanpie.github.io/tags/Python/"/>
+    
     <category term="OI" scheme="https://greenbeanpie.github.io/tags/OI/"/>
+    
+    <category term="信息技术" scheme="https://greenbeanpie.github.io/tags/%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
@@ -151,7 +178,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/31/diary/"/>
     <id>https://greenbeanpie.github.io/2023/10/31/diary/</id>
     <published>2023-10-31T04:46:05.000Z</published>
-    <updated>2024-03-11T08:55:44.403Z</updated>
+    <updated>2024-06-08T12:46:48.102Z</updated>
     
     
       
@@ -176,7 +203,7 @@
     <link href="https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/"/>
     <id>https://greenbeanpie.github.io/2023/10/29/cambridge-dictionary-query-program/</id>
     <published>2023-10-29T08:09:31.000Z</published>
-    <updated>2023-11-07T10:47:00.353Z</updated>
+    <updated>2024-06-08T12:44:13.722Z</updated>
     
     
       
@@ -193,9 +220,7 @@
     <category term="编程" scheme="https://greenbeanpie.github.io/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="Python" scheme="https://greenbeanpie.github.io/tags/Python/"/>
-    
-    <category term="爬虫" scheme="https://greenbeanpie.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    <category term="信息技术 - Python - 爬虫" scheme="https://greenbeanpie.github.io/tags/%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF-Python-%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
