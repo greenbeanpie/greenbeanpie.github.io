@@ -6,7 +6,7 @@
   <link href="https://greenbeanpie.github.io/atom.xml" rel="self"/>
   
   <link href="https://greenbeanpie.github.io/"/>
-  <updated>2024-03-30T09:07:01.999Z</updated>
+  <updated>2024-06-08T12:41:35.391Z</updated>
   <id>https://greenbeanpie.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IDE-recommendation</title>
+    <link href="https://greenbeanpie.github.io/2024/06/08/ide-recommendation/"/>
+    <id>https://greenbeanpie.github.io/2024/06/08/ide-recommendation/</id>
+    <published>2024-06-08T12:41:35.000Z</published>
+    <updated>2024-06-08T12:41:35.391Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>WZ-自动点餐小程序</title>
